@@ -1,0 +1,32 @@
+{
+  "hosting": {
+    "predeploy": "yarn build",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "package.json",
+      "tsconfig.json",
+      "yarn.lock",
+      "gatsby-*.js",
+      "**/.*",
+      "**/node_modules/**",
+      "src/**",
+      "static/**"
+    ],
+    "headers": [
+      {
+        "source" : "**/sw.js",
+        "headers" : [
+          {
+            "key" : "Service-Worker-Allowed",
+            "value" : "/"
+          },
+          {
+            "key" : "Cache-Control",
+            "value" : "no-cache"
+          }
+        ]
+      }
+    ]
+  }
+}
