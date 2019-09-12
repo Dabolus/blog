@@ -74,5 +74,12 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography',
       },
     },
+    'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-plugin-generate-typings',
+      options: {
+        dest: 'src/generated/graphql-types.ts',
+      },
+    },
   ],
 };
