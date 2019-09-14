@@ -14,6 +14,23 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-source-firestore',
+      options: {
+        credential: JSON.parse(process.env.FIREBASE_CREDENTIALS),
+        types: [
+          {
+            type: 'Post',
+            collection: 'posts',
+            map: ({ createdAt, updatedAt, ...post }) => ({
+              ...post,
+              createdAt: createdAt.toDate(),
+              updatedAt: updatedAt.toDate(),
+            }),
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/blog`,

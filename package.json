@@ -27,6 +27,7 @@
     "gatsby-remark-responsive-iframe": "^2.2.16",
     "gatsby-remark-smartypants": "^2.1.8",
     "gatsby-source-filesystem": "^2.1.22",
+    "gatsby-source-firestore": "https://github.com/audkar/gatsby-source-firestore#51f46547cdf3ec384da29197065998ad434be1eb",
     "gatsby-transformer-remark": "^2.6.22",
     "gatsby-transformer-sharp": "^2.2.14",
     "prismjs": "^1.17.1",
