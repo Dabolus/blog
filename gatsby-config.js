@@ -61,7 +61,6 @@ module.exports = {
             },
           },
           'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
         ],
       },
@@ -88,6 +87,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-typography',
