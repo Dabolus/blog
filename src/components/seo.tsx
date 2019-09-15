@@ -5,15 +5,36 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { SeoQuery, PageProps } from '../utils/types';
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+interface SEOMetadata {
+  name: string;
+  content: string;
+}
+
+interface SEOProps extends PageProps {
+  description?: string;
+  lang?: string;
+  meta?: readonly SEOMetadata[];
+  title: string;
+}
+
+const SEO: FunctionComponent<SEOProps> = ({
+  description = '',
+  lang = 'en',
+  meta = [],
+  title,
+}) => {
+  const {
+    site: {
+      siteMetadata: { title: metaTitle, description: metaDescription, author },
+    },
+  }: SeoQuery = useStaticQuery(
     graphql`
-      query {
+      query SEO {
         site {
           siteMetadata {
             title
@@ -25,7 +46,7 @@ function SEO({ description, lang, meta, title }) {
     `,
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const pageDescription = description || metaDescription;
 
   return (
     <Helmet
@@ -33,11 +54,11 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${metaTitle}`}
       meta={[
         {
           name: 'description',
-          content: metaDescription,
+          content: pageDescription,
         },
         {
           property: 'og:title',
@@ -45,7 +66,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: 'og:description',
-          content: metaDescription,
+          content: pageDescription,
         },
         {
           property: 'og:type',
@@ -57,7 +78,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: 'twitter:creator',
-          content: site.siteMetadata.author,
+          content: author,
         },
         {
           name: 'twitter:title',
@@ -65,24 +86,12 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: 'twitter:description',
-          content: metaDescription,
+          content: pageDescription,
         },
-      ].concat(meta)}
+        ...meta,
+      ]}
     />
   );
-}
-
-SEO.defaultProps = {
-  lang: 'en',
-  meta: [],
-  description: '',
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 };
 
 export default SEO;
