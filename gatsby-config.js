@@ -4,12 +4,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter Blog',
-    author: 'Kyle Mathews',
-    description: 'A starter blog demonstrating what Gatsby can do.',
-    siteUrl: 'https://gatsby-starter-blog-demo.netlify.com/',
+    title: "Giorgio Garasto's Blog",
+    author: 'Giorgio Garasto',
+    description: 'Check out my Software Engineer experiences and advices.',
+    siteUrl: 'https://giorgio.garasto.blog/',
     social: {
-      twitter: 'kylemathews',
+      twitter: 'Dabolus',
     },
   },
   plugins: [
@@ -87,8 +87,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Gatsby Starter Blog',
-        short_name: 'GatsbyJS',
+        name: "Giorgio Garasto's Blog",
+        short_name: 'GG Blog',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#663399',
