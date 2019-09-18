@@ -1,4 +1,3 @@
-const grayMatter = require('gray-matter');
 const _ = require('lodash');
 
 module.exports = async (
@@ -16,42 +15,21 @@ module.exports = async (
     return {};
   }
 
-  const content = node;
+  const data = node;
 
   try {
-    let data = grayMatter(content, pluginOptions);
-
-    if (data.data) {
-      data.data = _.mapValues(data.data, value => {
-        if (_.isDate(value)) {
-          return value.toJSON();
-        }
-        return value;
-      });
-    }
-
     let markdownNode = {
+      ...data,
+      slug: node.id,
       id: createNodeId(`${node.id} >>> MarkdownRemark`),
       children: [],
       parent: node.id,
       internal: {
         content: data.content,
-        type: `MarkdownRemark`,
+        type: 'MarkdownRemark',
       },
+      rawMarkdownBody: data.content,
     };
-
-    markdownNode.frontmatter = {
-      title: ``, // always include a title
-      ...data.data,
-    };
-
-    markdownNode.excerpt = data.excerpt;
-    markdownNode.rawMarkdownBody = data.content;
-
-    // Add path to the markdown file path
-    if (node.internal.type === `File`) {
-      markdownNode.fileAbsolutePath = node.absolutePath;
-    }
 
     markdownNode.internal.contentDigest = createContentDigest(markdownNode);
 
