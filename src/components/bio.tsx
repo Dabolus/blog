@@ -63,11 +63,9 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.{' '}
-        <a href={`https://twitter.com/${twitter}`}>
-          You should follow him on Twitter
-        </a>
+        Hi! I'm <strong>{author}</strong>, a Software Engineer trying to make
+        the web a better place since 2004.{' '}
+        <a href={`https://twitter.com/${twitter}`}>Follow me on Twitter</a>
       </p>
     </div>
   );

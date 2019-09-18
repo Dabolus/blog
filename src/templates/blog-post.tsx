@@ -9,11 +9,7 @@ import { BlogPostBySlugQuery, PageProps } from '../utils/types';
 
 const BlogPostTemplate: FunctionComponent<PageProps<BlogPostBySlugQuery>> = ({
   data: {
-    markdownRemark: {
-      excerpt,
-      html,
-      frontmatter: { title, description, date },
-    },
+    markdownRemark: { excerpt, html, title, description, createdAt },
     site: {
       siteMetadata: { title: siteTitle },
     },
@@ -40,7 +36,7 @@ const BlogPostTemplate: FunctionComponent<PageProps<BlogPostBySlugQuery>> = ({
             marginBottom: rhythm(1),
           }}
         >
-          {date}
+          {createdAt}
         </p>
       </header>
       <section dangerouslySetInnerHTML={{ __html: html }} />
@@ -93,15 +89,13 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(slug: { eq: $slug }) {
       id
       excerpt(pruneLength: 160)
       html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
+      title
+      createdAt(formatString: "MMMM DD, YYYY")
+      description
     }
   }
 `;

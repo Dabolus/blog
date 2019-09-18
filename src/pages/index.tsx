@@ -19,39 +19,31 @@ const BlogHome: FunctionComponent<PageProps<BlogHomeQuery>> = ({
   <Layout location={location} title={siteTitle}>
     <SEO title="All posts" />
     <Bio />
-    {posts.map(
-      ({
-        node: {
-          frontmatter: { title, date, description },
-          fields: { slug },
-          excerpt,
-        },
-      }) => {
-        return (
-          <article key={slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: 'none' }} to={slug}>
-                  {title || slug}
-                </Link>
-              </h3>
-              <small>{date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: description || excerpt,
-                }}
-              />
-            </section>
-          </article>
-        );
-      },
-    )}
+    {posts.map(({ node: { title, createdAt, description, slug, excerpt } }) => {
+      return (
+        <article key={slug}>
+          <header>
+            <h3
+              style={{
+                marginBottom: rhythm(1 / 4),
+              }}
+            >
+              <Link style={{ boxShadow: 'none' }} to={slug}>
+                {title || slug}
+              </Link>
+            </h3>
+            <small>{createdAt}</small>
+          </header>
+          <section>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: description || excerpt,
+              }}
+            />
+          </section>
+        </article>
+      );
+    })}
   </Layout>
 );
 
@@ -64,18 +56,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [createdAt], order: DESC }) {
       edges {
         node {
           excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
+          slug
+          createdAt(formatString: "MMMM DD, YYYY")
+          title
+          description
         }
       }
     }

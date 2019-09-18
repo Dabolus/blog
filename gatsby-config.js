@@ -33,19 +33,12 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/blog`,
-        name: 'blog',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/assets`,
+        path: `${__dirname}/assets`,
         name: 'assets',
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-transformer-firestore-to-post',
       options: {
         plugins: [
           {
@@ -93,7 +86,7 @@ module.exports = {
         background_color: '#ffffff',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'content/assets/gatsby-icon.png',
+        icon: 'assets/gatsby-icon.png',
       },
     },
     'gatsby-plugin-offline',
