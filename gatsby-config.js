@@ -58,8 +58,8 @@ module.exports = {
             options: {
               noInlineHighlight: true,
               prompt: {
-                user: 'root',
-                host: 'localhost',
+                user: 'giorgio',
+                host: 'garasto.blog',
                 global: false,
               },
             },
