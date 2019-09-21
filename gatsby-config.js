@@ -129,12 +129,23 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: "Giorgio Garasto's Blog",
-        short_name: 'GG Blog',
+        short_name: "GG's Blog",
+        icons: [
+          {
+            src: 'icons/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'icons/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+        theme_color: '#fff',
+        background_color: '#fff',
         start_url: '/',
-        background_color: '#ffffff',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'assets/gatsby-icon.png',
+        display: 'standalone',
       },
     },
     'gatsby-plugin-offline',
