@@ -3,8 +3,30 @@ import Wordpress2016 from 'typography-theme-wordpress-2016';
 
 Wordpress2016.overrideThemeStyles = () => {
   return {
-    'a.gatsby-resp-image-link': {
+    'html, body': {
+      color: 'var(--theme-primary-color)',
+      background: 'var(--theme-default-background)',
+    },
+    'th, td': {
+      borderColor: 'var(--theme-separator)',
+    },
+    blockquote: {
+      color: 'var(--theme-secondary-color)',
+      borderColor: 'var(--theme-primary-color)',
+    },
+    a: {
+      color: 'var(--theme-accent)',
+    },
+    // gatsby-remark-autolink-headers - don't underline when hidden
+    'a.anchor, a.gatsby-resp-image-link': {
       boxShadow: 'none',
+    },
+    // gatsby-remark-autolink-headers - use theme colours for the link icon
+    'a.anchor svg[aria-hidden="true"]': {
+      stroke: 'var(--theme-accent)',
+    },
+    hr: {
+      background: 'var(--theme-separator)',
     },
   };
 };
