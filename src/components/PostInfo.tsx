@@ -19,12 +19,12 @@ const PostInfo: FunctionComponent<PostInfoProps> = ({
     &nbsp;{createdAt}
     {createdAt === updatedAt ? null : (
       <>
-        &nbsp;|&nbsp;
+        &nbsp;·&nbsp;
         <Update />
         &nbsp;{updatedAt}
       </>
     )}
-    &nbsp;|&nbsp;
+    &nbsp;·&nbsp;
     <Timer />
     &nbsp;≈{readingTime}min
   </>
