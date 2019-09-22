@@ -6,10 +6,8 @@ html {
   --theme-content-background: #fafafa;
   --theme-card-background: #fff;
   --theme-separator: rgba(0, 0, 0, 0.12);
-}
 
-@media (light-level: dim), (prefers-color-scheme: dark) {
-  html {
+  @media (light-level: dim), (prefers-color-scheme: dark) {
     --theme-primary-color: #fff;
     --theme-secondary-color: rgba(255, 255, 255, 0.7);
     --theme-accent: #ff6659;
@@ -26,10 +24,10 @@ html {
   margin: 0.5em 0;
   padding: 1em;
   overflow: auto;
-}
 
-.gatsby-highlight pre[class*='language-'].line-numbers {
-  padding: 0;
-  padding-left: 2.8em;
-  overflow: initial;
+  pre[class*='language-'].line-numbers {
+    padding: 0;
+    padding-left: 2.8em;
+    overflow: initial;
+  }
 }

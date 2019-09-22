@@ -19,3 +19,8 @@ declare module 'typography-breakpoint-constants' {
   export const MIN_TABLET_MEDIA_QUERY = '@media (min-width:768px)';
   export const MIN_MOBILE_MEDIA_QUERY = '@media (min-width:480px)';
 }
+
+declare module '*.module.scss' {
+  const styles: { readonly [key: string]: any };
+  export default styles;
+}
