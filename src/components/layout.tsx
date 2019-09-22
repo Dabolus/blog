@@ -61,7 +61,7 @@ const Layout: FunctionComponent<PageProps> = ({
     </header>
     <main>{children}</main>
     <footer>
-      © {new Date().getFullYear()}, Built with{' '}
+      © {new Date().getFullYear()} Giorgio Garasto, Built with{' '}
       <a href="https://www.gatsbyjs.org">Gatsby</a>
     </footer>
   </div>
