@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 import { PageProps, BlogHomeQuery } from '../utils/types';
+import PostInfo from '../components/PostInfo';
 
 const BlogHome: FunctionComponent<PageProps<BlogHomeQuery>> = ({
   data: {
@@ -19,31 +20,49 @@ const BlogHome: FunctionComponent<PageProps<BlogHomeQuery>> = ({
   <Layout location={location} title={siteTitle}>
     <SEO title="All posts" />
     <Bio />
-    {posts.map(({ node: { title, createdAt, description, slug, excerpt } }) => {
-      return (
-        <article key={slug}>
-          <header>
-            <h3
-              style={{
-                marginBottom: rhythm(1 / 4),
-              }}
-            >
-              <Link style={{ boxShadow: 'none' }} to={slug}>
-                {title || slug}
-              </Link>
-            </h3>
-            <small>{createdAt}</small>
-          </header>
-          <section>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: description || excerpt,
-              }}
-            />
-          </section>
-        </article>
-      );
-    })}
+    {posts.map(
+      ({
+        node: {
+          title,
+          createdAt,
+          updatedAt,
+          timeToRead,
+          description,
+          slug,
+          excerpt,
+        },
+      }) => {
+        return (
+          <article key={slug}>
+            <header>
+              <h3
+                style={{
+                  marginBottom: rhythm(1 / 4),
+                }}
+              >
+                <Link style={{ boxShadow: 'none' }} to={slug}>
+                  {title || slug}
+                </Link>
+              </h3>
+              <small style={{ display: 'flex', alignItems: 'center' }}>
+                <PostInfo
+                  createdAt={createdAt}
+                  updatedAt={updatedAt}
+                  readingTime={timeToRead}
+                />
+              </small>
+            </header>
+            <section>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: description || excerpt,
+                }}
+              />
+            </section>
+          </article>
+        );
+      },
+    )}
   </Layout>
 );
 
@@ -61,7 +80,9 @@ export const pageQuery = graphql`
         node {
           excerpt
           slug
-          createdAt(formatString: "MMMM DD, YYYY")
+          createdAt(formatString: "MMMM DD, YYYY \\a\\t h:MM A")
+          updatedAt(formatString: "MMMM DD, YYYY \\a\\t h:MM A")
+          timeToRead
           title
           description
         }

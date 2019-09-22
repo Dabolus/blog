@@ -5,11 +5,26 @@ import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
-import { BlogPostBySlugQuery, PageProps } from '../utils/types';
+import {
+  BlogPostBySlugQuery,
+  PageProps,
+  MarkdownRemarkEdge,
+} from '../utils/types';
+import PostInfo from '../components/PostInfo';
 
-const BlogPostTemplate: FunctionComponent<PageProps<BlogPostBySlugQuery>> = ({
+const BlogPostTemplate: FunctionComponent<
+  PageProps<BlogPostBySlugQuery, MarkdownRemarkEdge>
+> = ({
   data: {
-    markdownRemark: { excerpt, html, title, description, createdAt },
+    markdownRemark: {
+      excerpt,
+      html,
+      title,
+      description,
+      createdAt,
+      updatedAt,
+      timeToRead,
+    },
     site: {
       siteMetadata: { title: siteTitle },
     },
@@ -32,11 +47,16 @@ const BlogPostTemplate: FunctionComponent<PageProps<BlogPostBySlugQuery>> = ({
         <p
           style={{
             ...scale(-1 / 5),
-            display: 'block',
+            display: 'flex',
+            alignItems: 'center',
             marginBottom: rhythm(1),
           }}
         >
-          {createdAt}
+          <PostInfo
+            createdAt={createdAt}
+            updatedAt={updatedAt}
+            readingTime={timeToRead}
+          />
         </p>
       </header>
       <section dangerouslySetInnerHTML={{ __html: html }} />
@@ -94,7 +114,9 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       title
-      createdAt(formatString: "MMMM DD, YYYY")
+      createdAt(formatString: "MMMM DD, YYYY \\a\\t h:MM A")
+      updatedAt(formatString: "MMMM DD, YYYY \\a\\t h:MM A")
+      timeToRead
       description
     }
   }
