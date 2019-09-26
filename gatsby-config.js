@@ -64,6 +64,12 @@ module.exports = {
               },
             },
           },
+          {
+            resolve: 'gatsby-remark-music',
+            options: {
+              color: 'var(--theme-primary-color)',
+            },
+          },
           'gatsby-remark-smartypants',
         ],
       },
