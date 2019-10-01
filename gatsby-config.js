@@ -154,6 +154,12 @@ module.exports = {
         display: 'standalone',
       },
     },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        sitemapSize: 5000,
+      },
+    },
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
