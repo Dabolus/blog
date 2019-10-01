@@ -1,20 +1,20 @@
 html {
-  --theme-primary-color: rgba(0, 0, 0, 0.87);
-  --theme-secondary-color: rgba(0, 0, 0, 0.54);
-  --theme-accent: #d32f2f;
-  --theme-default-background: #f0f0f0;
-  --theme-content-background: #fafafa;
-  --theme-card-background: #fff;
-  --theme-separator: rgba(0, 0, 0, 0.12);
+  --theme-primary-color: #fff;
+  --theme-secondary-color: rgba(255, 255, 255, 0.7);
+  --theme-accent: #ff6659;
+  --theme-default-background: #212121;
+  --theme-content-background: #303030;
+  --theme-card-background: #424242;
+  --theme-separator: rgba(255, 255, 255, 0.12);
 
-  @media (light-level: dim), (prefers-color-scheme: dark) {
-    --theme-primary-color: #fff;
-    --theme-secondary-color: rgba(255, 255, 255, 0.7);
-    --theme-accent: #ff6659;
-    --theme-default-background: #212121;
-    --theme-content-background: #303030;
-    --theme-card-background: #424242;
-    --theme-separator: rgba(255, 255, 255, 0.12);
+  @media (light-level: washed), (prefers-color-scheme: light) {
+    --theme-primary-color: rgba(0, 0, 0, 0.87);
+    --theme-secondary-color: rgba(0, 0, 0, 0.54);
+    --theme-accent: #d32f2f;
+    --theme-default-background: #f0f0f0;
+    --theme-content-background: #fafafa;
+    --theme-card-background: #fff;
+    --theme-separator: rgba(0, 0, 0, 0.12);
   }
 }
 
