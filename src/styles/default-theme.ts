@@ -1,8 +1,12 @@
 export interface DefaultTheme {
   layout: {
-    backgroundColor: string;
     primaryColor: string;
-    linkColor: string;
+    secondaryColor: string;
+    accent: string;
+    defaultBackground: string;
+    contentBackground: string;
+    cardBackground: string;
+    separator: string;
   };
   fonts: {
     base: string;

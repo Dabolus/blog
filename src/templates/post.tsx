@@ -59,8 +59,8 @@ const PostContent = styled.div`
 
   li > a,
   p > a {
-    color: ${theme.layout.linkColor};
-    border-bottom: 2px ${theme.layout.linkColor} solid;
+    color: ${theme.layout.accent};
+    border-bottom: 2px ${theme.layout.accent} solid;
   }
 
   pre {
@@ -69,7 +69,7 @@ const PostContent = styled.div`
 
   blockquote {
     border-left: 4px ${theme.layout.primaryColor} solid;
-    background-color: ${theme.layout.backgroundColor};
+    background-color: ${theme.layout.defaultBackground};
     margin: 30px 0;
     padding: 5px 20px;
     border-radius: 0.3em;

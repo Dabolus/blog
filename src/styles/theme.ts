@@ -2,9 +2,24 @@ import { DefaultTheme } from './default-theme';
 
 const theme: DefaultTheme = {
   layout: {
-    backgroundColor: `#fafafa`,
-    primaryColor: `#a4cbb8`,
-    linkColor: `#a4cbb8`,
+    dark: {
+      primaryColor: '#fff',
+      secondaryColor: 'rgba(255, 255, 255, 0.7)',
+      accent: '#ff6659',
+      defaultBackground: '#212121',
+      contentBackground: '#303030',
+      cardBackground: '#424242',
+      separator: 'rgba(255, 255, 255, 0.12)',
+    },
+    light: {
+      primaryColor: 'rgba(0, 0, 0, 0.87)',
+      secondaryColor: 'rgba(0, 0, 0, 0.54)',
+      accent: '#d32f2f',
+      defaultBackground: '#f0f0f0',
+      contentBackground: '#fafafa',
+      cardBackground: '#fff',
+      separator: 'rgba(0, 0, 0, 0.12)',
+    },
   },
   breakpoints: {
     xs: `425px`,
