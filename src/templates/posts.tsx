@@ -4,7 +4,7 @@ import { Container, Grid } from '../components/common';
 import { Post } from '../utils/models';
 import { Card } from '../components/card';
 import styled from 'styled-components';
-import TagList from '../components/tag-list';
+import SeriesList from '../components/series-list';
 import { Link } from 'gatsby';
 import SidebarContent from '../components/sidebar-content';
 import SEO from '../components/seo';
@@ -114,7 +114,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
           <SidebarContent />
         </Sidebar>
       </HomeContainer>
-      <TagList />
+      <SeriesList />
     </Layout>
   );
 };

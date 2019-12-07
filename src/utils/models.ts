@@ -29,6 +29,7 @@ export interface Series {
   color: string;
   icon: any;
   featured: boolean;
+  description: string;
 }
 
 export interface SocialChannels {

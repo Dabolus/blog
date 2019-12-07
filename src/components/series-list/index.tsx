@@ -39,7 +39,7 @@ const SeriesList: FunctionComponent = () => {
 
   return (
     <SeriesContainer>
-      <SeriesListTitle>Featured Series</SeriesListTitle>
+      <SeriesListTitle>Featured series</SeriesListTitle>
       <StyledSeriesList>
         {series.map((series, index) => {
           const icon = series.icon;
