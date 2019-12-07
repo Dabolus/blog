@@ -51,7 +51,7 @@ const PageTemplate: FunctionComponent<PageTemplateProps> = ({
       />
       <Subheader
         title={page.frontmatter.title}
-        backgroundColor={theme.layout.primaryColor}
+        backgroundColor={theme.layout.cardBackground}
       />
       <PageContainer>
         <section dangerouslySetInnerHTML={{ __html: page.html }} />
