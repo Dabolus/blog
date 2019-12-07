@@ -24,6 +24,13 @@ export interface Tag {
   featured: boolean;
 }
 
+export interface Series {
+  name: string;
+  color: string;
+  icon: any;
+  featured: boolean;
+}
+
 export interface SocialChannels {
   facebook?: string;
   twitter?: string;
@@ -44,6 +51,7 @@ export interface Post {
     title: string;
     path: string;
     tags: string[];
+    series: string;
     excerpt: string;
     created: string;
     createdPretty: string;

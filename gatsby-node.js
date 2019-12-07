@@ -1,6 +1,6 @@
-const fs      = require('fs');
-const mkdirp  = require('mkdirp');
-const path    = require('path');
+const fs = require('fs');
+const mkdirp = require('mkdirp');
+const path = require('path');
 const slugify = require('slugify');
 
 /**
@@ -10,7 +10,7 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   const { program } = store.getState();
 
   const contentPath = themeOptions.contentPath || 'content';
-  const dir         = path.join(program.directory, contentPath);
+  const dir = path.join(program.directory, contentPath);
 
   if (!fs.existsSync(dir)) {
     mkdirp(dir);
@@ -18,12 +18,14 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
 };
 
 exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
-  const postsPerPage = themeOptions.postsPerPage ? themeOptions.postsPerPage : 5;
+  const postsPerPage = themeOptions.postsPerPage
+    ? themeOptions.postsPerPage
+    : 5;
 
   const result = await graphql(`
     query {
       pages: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/(\\/pages\\/).*.(md)/" } }
+        filter: { fileAbsolutePath: { regex: "/(/pages/).*.(md)/" } }
       ) {
         edges {
           node {
@@ -49,6 +51,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
               title
               path
               tags
+              series
               excerpt
               created
               createdPretty: created(formatString: "DD MMMM, YYYY")
@@ -77,6 +80,13 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
           }
         }
       }
+      series: allSeries {
+        edges {
+          node {
+            name
+          }
+        }
+      }
     }
   `);
 
@@ -84,24 +94,33 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     reporter.panic(result.errors);
   }
 
-  const tags          = [];
-  const posts         = result.data.posts.edges.map(node => node.node);
-  const pages         = result.data.pages.edges.map(node => node.node);
-  const availableTags = result.data.tags.edges.map(node => node.node).map(t => t.name) || [];
+  const tags = [];
+  const series = [];
+  const posts = result.data.posts.edges.map(node => node.node);
+  const pages = result.data.pages.edges.map(node => node.node);
+  const availableTags =
+    result.data.tags.edges.map(node => node.node).map(t => t.name) || [];
+  const availableSeries =
+    result.data.series.edges.map(node => node.node).map(t => t.name) || [];
 
   // Create a route for every single post (located in `content/posts`)
   posts.forEach(post => {
     if (post.frontmatter.tags) {
       tags.push(...post.frontmatter.tags);
     }
-    const primaryTag = post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null;
+    if (post.frontmatter.series) {
+      series.push(post.frontmatter.series);
+    }
+    const primaryTag =
+      post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null;
     actions.createPage({
       path: post.frontmatter.path,
       component: require.resolve(`./src/templates/post.tsx`),
       context: {
         postId: post.id,
-        primaryTag: primaryTag
-      }
+        primaryTag: primaryTag,
+        series: post.frontmatter.series,
+      },
     });
   });
 
@@ -111,8 +130,8 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       path: page.frontmatter.path,
       component: require.resolve(`./src/templates/page.tsx`),
       context: {
-        page
-      }
+        page,
+      },
     });
   });
 
@@ -123,18 +142,30 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       path: `/tag/${slugified}`,
       component: require.resolve(`./src/templates/tag.tsx`),
       context: {
-        tag
-      }
+        tag,
+      },
+    });
+  });
+
+  // Create a route for every single route (from `content/series.yml` and the series found in posts)
+  [...new Set(series)].concat(availableSeries).forEach(series => {
+    const slugified = slugify(series, { lower: true });
+    actions.createPage({
+      path: `/series/${slugified}`,
+      component: require.resolve(`./src/templates/series.tsx`),
+      context: {
+        series,
+      },
     });
   });
 
   // The index page
   actions.createPage({
-    path: "/",
+    path: '/',
     component: require.resolve(`./src/templates/posts.tsx`),
     context: {
       posts,
-      postsPerPage
-    }
+      postsPerPage,
+    },
   });
 };

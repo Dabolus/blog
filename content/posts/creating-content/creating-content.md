@@ -2,6 +2,7 @@
 title: "Creating content"
 path: "/creating-content"
 tags: ["Theme"]
+series: "Theme"
 featuredImage: "./cover.jpg"
 excerpt: How to create pages, posts and manage tags.
 created: 2019-07-21

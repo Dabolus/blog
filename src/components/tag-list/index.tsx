@@ -1,8 +1,8 @@
-import React, {FunctionComponent} from "react";
-import {graphql, Link, useStaticQuery} from "gatsby";
-import {Tag} from "../../utils/models";
-import Img from "gatsby-image";
-import slugify from "slugify";
+import React, { FunctionComponent } from 'react';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Tag } from '../../utils/models';
+import Img from 'gatsby-image';
+import slugify from 'slugify';
 import {
   StyledTag,
   StyledTagList,
@@ -12,12 +12,12 @@ import {
   TagIcon,
   TagListTitle,
   TagName,
-} from "./style";
+} from './style';
 
 const TagList: FunctionComponent = () => {
   const tagsQuery = useStaticQuery<{ allTags: { nodes: Tag[] } }>(graphql`
     query Tags {
-      allTags(filter: {featured: { eq: true }}) {
+      allTags(filter: { featured: { eq: true } }) {
         nodes {
           name
           icon {
@@ -33,7 +33,7 @@ const TagList: FunctionComponent = () => {
       }
     }
   `);
-  const tags      = tagsQuery.allTags.nodes;
+  const tags = tagsQuery.allTags.nodes;
 
   return (
     <TagContainer>
@@ -43,12 +43,13 @@ const TagList: FunctionComponent = () => {
           const icon = tag.icon;
           return (
             <StyledTag key={index}>
-              <Link to={`/tag/${slugify(tag.name, {lower: true})}`}>
+              <Link to={`/tag/${slugify(tag.name, { lower: true })}`}>
                 {/* gatsby-image doesn't handle SVGs, hence we need to take care of it */}
-                {icon.extension !== 'svg'
-                  ? <Img fixed={tag.icon.childImageSharp.fixed}/>
-                  : <TagIcon src={icon.publicURL} alt={tag.name}/>
-                }
+                {icon.extension !== 'svg' ? (
+                  <Img fixed={tag.icon.childImageSharp.fixed} />
+                ) : (
+                  <TagIcon src={icon.publicURL} alt={tag.name} />
+                )}
                 <TagName>{tag.name}</TagName>
               </Link>
             </StyledTag>

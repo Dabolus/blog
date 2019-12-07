@@ -1,14 +1,14 @@
-import React, {FunctionComponent} from "react";
-import Layout from "../components/layout";
-import {Container, Grid} from "../components/common";
-import {Post} from "../utils/models";
-import {Card} from "../components/card";
-import styled from "styled-components";
-import TagList from "../components/tag-list";
-import {Link} from "gatsby";
-import SidebarContent from "../components/sidebar-content";
-import SEO from "../components/seo";
-import Theme from "../styles/theme";
+import React, { FunctionComponent } from 'react';
+import Layout from '../components/layout';
+import { Container, Grid } from '../components/common';
+import { Post } from '../utils/models';
+import { Card } from '../components/card';
+import styled from 'styled-components';
+import TagList from '../components/tag-list';
+import { Link } from 'gatsby';
+import SidebarContent from '../components/sidebar-content';
+import SEO from '../components/seo';
+import Theme from '../styles/theme';
 
 interface PostsPageProps {
   pathContext: {
@@ -20,7 +20,7 @@ interface PostsPageProps {
 
 const HomeContainer = styled(Container)`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) .25fr;
+  grid-template-columns: minmax(0, 1fr) 0.25fr;
   grid-column-gap: 30px;
 
   @media (max-width: ${Theme.breakpoints.xl}) {
@@ -31,7 +31,7 @@ const HomeContainer = styled(Container)`
 const PostsContainer = styled(Grid)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "latest latest" ". .";
+  grid-template-areas: 'latest latest' '. .';
   width: 100%;
   margin-left: 0;
   margin-right: 0;
@@ -65,10 +65,10 @@ const ArchiveLinkWrapper = styled.div`
 `;
 
 const ArchiveLink = styled(Link)`
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 10px;
-  border-radius: .3em;
-  transition: background-color .5s;
+  border-radius: 0.3em;
+  transition: background-color 0.5s;
   background-color: #f2f2f2;
 
   &:hover {
@@ -76,7 +76,10 @@ const ArchiveLink = styled(Link)`
   }
 `;
 
-const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext, location }) => {
+const PostsPage: FunctionComponent<PostsPageProps> = ({
+  pathContext,
+  location,
+}) => {
   const posts = pathContext.posts.slice(0, pathContext.postsPerPage);
 
   return (
@@ -88,17 +91,22 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext, location })
             <Card
               title={post.frontmatter.title}
               path={post.frontmatter.path}
-              featuredImage={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp : null}
+              featuredImage={
+                post.frontmatter.featuredImage
+                  ? post.frontmatter.featuredImage.childImageSharp
+                  : null
+              }
               content={post.frontmatter.excerpt}
               key={index}
-              meta={
-                {
-                  time: post.frontmatter.created,
-                  timePretty: post.frontmatter.createdPretty,
-                  tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null,
-                }
-              }
-              style={{gridArea: index === 0 ? 'latest' : undefined}}
+              meta={{
+                time: post.frontmatter.created,
+                timePretty: post.frontmatter.createdPretty,
+                tag:
+                  post.frontmatter.tags.length > 0
+                    ? post.frontmatter.tags[0]
+                    : null,
+              }}
+              style={{ gridArea: index === 0 ? 'latest' : undefined }}
               halfImage={index === 0}
             />
           ))}

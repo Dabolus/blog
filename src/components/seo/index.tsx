@@ -1,8 +1,8 @@
-import React, {FunctionComponent} from "react";
+import React, { FunctionComponent } from 'react';
 import Helmet from 'react-helmet';
-import {graphql, useStaticQuery} from "gatsby";
-import {SiteMetadata} from "../../utils/models";
-import url from "url";
+import { graphql, useStaticQuery } from 'gatsby';
+import { SiteMetadata } from '../../utils/models';
+import url from 'url';
 
 interface SEOProps {
   title?: string;
@@ -13,23 +13,25 @@ interface SEOProps {
   updatedAt?: string;
   isArticle?: boolean;
   tags?: string[];
+  series?: string;
   type?: 'WebSite' | 'Series' | 'Article';
   image?: string;
 }
 
 const SEO: FunctionComponent<SEOProps> = ({
-                                            title,
-                                            description,
-                                            lang = 'en',
-                                            location,
-                                            publishedAt,
-                                            updatedAt,
-                                            isArticle = false,
-                                            tags = [],
-                                            type = `Article`,
-                                            image,
-                                          }) => {
-  const {site}          = useStaticQuery<SiteMetadata>(graphql`
+  title,
+  description,
+  lang = 'en',
+  location,
+  publishedAt,
+  updatedAt,
+  isArticle = false,
+  tags = [],
+  series,
+  type = `Article`,
+  image,
+}) => {
+  const { site } = useStaticQuery<SiteMetadata>(graphql`
     query {
       site {
         siteMetadata {
@@ -49,17 +51,17 @@ const SEO: FunctionComponent<SEOProps> = ({
       }
     }
   `);
-  const metadata        = site.siteMetadata;
-  const siteTitle       = title ? `${title} - ${metadata.title}` : metadata.title;
+  const metadata = site.siteMetadata;
+  const siteTitle = title ? `${title} - ${metadata.title}` : metadata.title;
   const metaDescription = description
     ? description
-    : metadata.description.replace("%TOPICS%", metadata.topics.join(", "));
-  const metaImage       = image ? `${metadata.siteUrl}/${image}` : null;
-  const canonical       = url.resolve(metadata.siteUrl, location.pathname);
+    : metadata.description.replace('%TOPICS%', metadata.topics.join(', '));
+  const metaImage = image ? `${metadata.siteUrl}/${image}` : null;
+  const canonical = url.resolve(metadata.siteUrl, location.pathname);
 
   return (
     <Helmet
-      htmlAttributes={{lang}}
+      htmlAttributes={{ lang }}
       title={siteTitle}
       meta={[
         {
@@ -108,34 +110,54 @@ const SEO: FunctionComponent<SEOProps> = ({
         },
         {
           name: `keywords`,
-          content: metadata.topics.concat(tags).join(', '),
+          content: [
+            ...metadata.topics,
+            ...tags,
+            ...(series ? [series] : []),
+          ].join(', '),
         },
-      ]
-        .concat(
-          publishedAt ? [{
-            name: `article:published_time`,
-            content: publishedAt,
-          }] : [],
-          updatedAt ? [{
-            name: `article:modified_time`,
-            content: updatedAt,
-          }] : [],
-          tags.length > 0 ? [{
-            name: `twitter:label2`,
-            content: `Filed under`,
-          }, {
-            name: `twitter:data2`,
-            content: tags[0],
-          }] : [],
-          metaImage ? [{
-            name: `og:image`,
-            content: metaImage,
-          }, {
-            name: `twitter:image`,
-            content: metaImage,
-          }] : [],
-        )
-      }
+      ].concat(
+        publishedAt
+          ? [
+              {
+                name: `article:published_time`,
+                content: publishedAt,
+              },
+            ]
+          : [],
+        updatedAt
+          ? [
+              {
+                name: `article:modified_time`,
+                content: updatedAt,
+              },
+            ]
+          : [],
+        series
+          ? [
+              {
+                name: `twitter:label2`,
+                content: `Filed under`,
+              },
+              {
+                name: `twitter:data2`,
+                content: series,
+              },
+            ]
+          : [],
+        metaImage
+          ? [
+              {
+                name: `og:image`,
+                content: metaImage,
+              },
+              {
+                name: `twitter:image`,
+                content: metaImage,
+              },
+            ]
+          : [],
+      )}
     >
       <script type={`application/ld+json`}>{`
         {
@@ -145,17 +167,27 @@ const SEO: FunctionComponent<SEOProps> = ({
             "@type": "Person",
             "name": "${metadata.author.name}"
           },
-          ${tags.length > 0 ? `"keywords": "${tags.join(`, `)}",` : ``}
+          ${
+            series || tags.length > 0
+              ? `"keywords": "${[...tags, ...(series ? [series] : [])].join(
+                  `, `,
+                )}",`
+              : ``
+          }
           "headline": "${siteTitle}",
           "url": "${canonical}",
           ${publishedAt ? `"datePublished": "${publishedAt}",` : ``}
           ${updatedAt ? `"datePublished": "${updatedAt}",` : ``}
-          ${metaImage ? `"image": {
+          ${
+            metaImage
+              ? `"image": {
             "@type": "ImageObject",
             "url": "${metaImage}",
             "width": "1000",
             "height": "520"
-          },` : ``}
+          },`
+              : ``
+          }
           "publisher": {
             "@type": "Organization",
             "name": "${metadata.title}"

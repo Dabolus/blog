@@ -77,7 +77,8 @@ module.exports = {
     {
       resolve: `gatsby-transformer-yaml`,
       options: {
-        typeName: `Tags`,
+        typeName: ({ node: { name } }) =>
+          `${name[0].toUpperCase()}${name.slice(1).toLowerCase()}`,
       },
     },
     {
@@ -92,6 +93,7 @@ module.exports = {
           { name: 'title', store: true, attributes: { boost: 20 } },
           { name: 'content', store: true },
           { name: 'tags', store: true },
+          { name: 'series', store: true },
           { name: 'excerpt', store: true },
           { name: 'path', store: true },
         ],
@@ -100,6 +102,7 @@ module.exports = {
             title: node => node.frontmatter.title,
             content: node => node.html,
             tags: node => node.frontmatter.tags,
+            series: node => node.frontmatter.series,
             excerpt: node => node.frontmatter.excerpt,
             path: node => node.frontmatter.path,
           },

@@ -1,8 +1,8 @@
-import React, {FunctionComponent} from "react";
-import {graphql, useStaticQuery} from "gatsby";
-import {Card} from "../card";
-import styled from "styled-components";
-import Theme from "../../styles/theme";
+import React, { FunctionComponent } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Card } from '../card';
+import styled from 'styled-components';
+import Theme from '../../styles/theme';
 
 const LatestPosts = styled.div`
   display: grid;
@@ -34,6 +34,7 @@ const PageSidebarContent: FunctionComponent = () => {
               title
               path
               tags
+              series
               created
               createdPretty: created(formatString: "DD MMMM, YYYY")
               excerpt
@@ -63,13 +64,15 @@ const PageSidebarContent: FunctionComponent = () => {
             path={post.frontmatter.path}
             key={index}
             compact={true}
-            meta={
-              {
-                time: post.frontmatter.created,
-                timePretty: post.frontmatter.createdPretty,
-                tag: post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null,
-              }
-            }
+            meta={{
+              time: post.frontmatter.created,
+              timePretty: post.frontmatter.createdPretty,
+              tag:
+                post.frontmatter.tags.length > 0
+                  ? post.frontmatter.tags[0]
+                  : null,
+              series: post.frontmatter.series,
+            }}
           />
         ))}
       </LatestPosts>

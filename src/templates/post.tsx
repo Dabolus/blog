@@ -1,22 +1,23 @@
-import React, {createRef, FunctionComponent, useState} from "react";
-import Layout from "../components/layout";
-import {Post, Tag} from "../utils/models";
-import {Container} from "../components/common";
-import styled from "styled-components";
-import Toc from "../components/toc";
-import Img from "gatsby-image";
-import ReadingProgress from "../components/reading-progress";
-import Theme from "../styles/theme";
-import {graphql, Link} from "gatsby";
-import slugify from "slugify";
-import Bio from "../components/bio";
-import Comments from "../components/comments";
-import SEO from "../components/seo";
-import {FaAlignJustify, FaTimes} from "react-icons/fa";
+import React, { createRef, FunctionComponent, useState } from 'react';
+import Layout from '../components/layout';
+import { Post, Tag, Series } from '../utils/models';
+import { Container } from '../components/common';
+import styled from 'styled-components';
+import Toc from '../components/toc';
+import Img from 'gatsby-image';
+import ReadingProgress from '../components/reading-progress';
+import Theme from '../styles/theme';
+import { graphql, Link } from 'gatsby';
+import slugify from 'slugify';
+import Bio from '../components/bio';
+import Comments from '../components/comments';
+import SEO from '../components/seo';
+import { FaAlignJustify, FaTimes } from 'react-icons/fa';
 
 interface PostTemplateProps {
   data: {
     primaryTag: Tag | null;
+    series?: Series;
     post: Post;
   };
   location: Location;
@@ -31,11 +32,11 @@ const PostContainer = styled(Container)`
 const LeftSidebar = styled.div<{ show?: boolean }>`
   min-width: 255px;
   max-width: 225px;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 
   @media (max-width: ${Theme.breakpoints.xl}) {
     position: fixed;
-    opacity: ${props => props.show ? 1 : 0};
+    opacity: ${props => (props.show ? 1 : 0)};
     z-index: 1000;
     background-color: #fff;
     width: 100% !important;
@@ -51,7 +52,7 @@ const PostContent = styled.div`
   border-right: 1px #e5eff5 solid;
   border-left: 1px #e5eff5 solid;
   background-color: #fff;
-  box-shadow: 0 0 3px rgba(0, 0, 0, .03), 0 3px 46px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03), 0 3px 46px rgba(0, 0, 0, 0.1);
   z-index: 10;
   width: 1035px;
   max-width: 100%;
@@ -71,12 +72,15 @@ const PostContent = styled.div`
     background-color: ${Theme.layout.backgroundColor};
     margin: 30px 0;
     padding: 5px 20px;
-    border-radius: .3em;
+    border-radius: 0.3em;
   }
 
-  h3::before, h4::before, h5::before, h6::before {
+  h3::before,
+  h4::before,
+  h5::before,
+  h6::before {
     display: block;
-    content: " ";
+    content: ' ';
     height: 90px;
     margin-top: -90px;
     visibility: hidden;
@@ -89,13 +93,13 @@ const PostContent = styled.div`
     line-height: 1.2;
   }
 
-  code[class*="language-text"] {
+  code[class*='language-text'] {
     padding: 5px;
   }
 
   p > img {
     max-width: 100%;
-    border-radius: .3em;
+    border-radius: 0.3em;
     margin: 30px 0;
   }
 
@@ -111,7 +115,7 @@ const PostContent = styled.div`
     max-width: 100%;
 
     .gatsby-resp-image-image {
-      border-radius: .3em;
+      border-radius: 0.3em;
     }
   }
 `;
@@ -150,8 +154,8 @@ const StyledPost = styled.section`
 const PostMeta = styled.section`
   display: flex;
   justify-content: space-between;
-  opacity: .8;
-  font-size: .9em;
+  opacity: 0.8;
+  font-size: 0.9em;
 `;
 
 const PostTitle = styled.h1`
@@ -161,7 +165,7 @@ const PostTitle = styled.h1`
 
 const PostFooter = styled.footer`
   background-color: #fafafa;
-  font-size: .8em;
+  font-size: 0.8em;
   color: #666;
   padding: 40px;
   line-height: 1em;
@@ -207,7 +211,7 @@ const ToggleTocButton = styled.button`
   right: 20px;
   bottom: 20px;
   border-radius: 100%;
-  box-shadow: 0 0 3px rgba(0, 0, 0, .03), 0 3px 46px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03), 0 3px 46px rgba(0, 0, 0, 0.1);
   border: 0;
   z-index: 5000;
   width: 50px;
@@ -221,12 +225,15 @@ const ToggleTocButton = styled.button`
   }
 `;
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) => {
+const PostTemplate: FunctionComponent<PostTemplateProps> = ({
+  data,
+  location,
+}) => {
   const [showToc, setShowToc] = useState<boolean>(false);
-  const post                  = data.post;
-  const readingProgressRef    = createRef<HTMLElement>();
-  const primaryTag            = data.primaryTag;
-  const toggleToc             = () => setShowToc(!showToc);
+  const post = data.post;
+  const readingProgressRef = createRef<HTMLElement>();
+  const primaryTag = data.primaryTag;
+  const toggleToc = () => setShowToc(!showToc);
 
   return (
     <Layout bigHeader={false}>
@@ -236,60 +243,104 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
         publishedAt={post.frontmatter.created}
         updatedAt={post.frontmatter.updated}
         tags={post.frontmatter.tags}
+        series={post.frontmatter.series}
         description={post.frontmatter.excerpt}
-        image={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp.sizes.src : null}
+        image={
+          post.frontmatter.featuredImage
+            ? post.frontmatter.featuredImage.childImageSharp.sizes.src
+            : null
+        }
       />
-      <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : undefined}/>
+      <ReadingProgress
+        target={readingProgressRef}
+        color={primaryTag ? primaryTag.color : undefined}
+      />
       <PostContainer>
-        {post.headings.find(h => h.depth > 1) &&
-        <>
+        {post.headings.find(h => h.depth > 1) && (
+          <>
             <LeftSidebar show={showToc}>
-                <TocWrapper>
-                    <Toc onClick={toggleToc}/>
-                </TocWrapper>
+              <TocWrapper>
+                <Toc onClick={toggleToc} />
+              </TocWrapper>
             </LeftSidebar>
             <ToggleTocButton
-                role={`button`}
-                aria-label={`Toggle table of contents`}
-                onClick={toggleToc}
+              role={`button`}
+              aria-label={`Toggle table of contents`}
+              onClick={toggleToc}
             >
-              {showToc ? <FaTimes/> : <FaAlignJustify/>}
+              {showToc ? <FaTimes /> : <FaAlignJustify />}
             </ToggleTocButton>
-        </>
-        }
+          </>
+        )}
         <PostContent>
           <article className={`post`} ref={readingProgressRef}>
             <PostHeader>
               <PostMeta>
-                {post.frontmatter.tags.length > 0 &&
-                <Link to={`/tag/${slugify(post.frontmatter.tags[0], {lower: true})}`}>{post.frontmatter.tags[0]}</Link>
-                }
-                <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>
+                {post.frontmatter.tags.length > 0 && (
+                  <Link
+                    to={`/tag/${slugify(post.frontmatter.tags[0], {
+                      lower: true,
+                    })}`}
+                  >
+                    {post.frontmatter.tags[0]}
+                  </Link>
+                )}
+                <time dateTime={post.frontmatter.created}>
+                  {post.frontmatter.createdPretty}
+                </time>
+              </PostMeta>
+              <PostMeta>
+                {post.frontmatter.series && (
+                  <Link
+                    to={`/series/${slugify(post.frontmatter.series, {
+                      lower: true,
+                    })}`}
+                  >
+                    {post.frontmatter.series}
+                  </Link>
+                )}
+                <time dateTime={post.frontmatter.created}>
+                  {post.frontmatter.createdPretty}
+                </time>
               </PostMeta>
               <PostTitle>{post.frontmatter.title}</PostTitle>
             </PostHeader>
-            {post.frontmatter.featuredImage &&
-            <FeaturedImage sizes={post.frontmatter.featuredImage.childImageSharp.sizes}/>
-            }
-            <StyledPost dangerouslySetInnerHTML={{__html: post.html}} className={`post`}/>
+            {post.frontmatter.featuredImage && (
+              <FeaturedImage
+                sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+              />
+            )}
+            <StyledPost
+              dangerouslySetInnerHTML={{ __html: post.html }}
+              className={`post`}
+            />
             <PostFooter>
               <p>
                 Published under&nbsp;
+                {/* TODO: add series */}
                 {post.frontmatter.tags.map((tag, index) => (
                   <span key={index}>
-                    <FooterTagLink
-                      to={`/tag/${slugify(tag, {lower: true})}`}
-                    >
+                    <FooterTagLink to={`/tag/${slugify(tag, { lower: true })}`}>
                       {tag}
                     </FooterTagLink>
                     {post.frontmatter.tags.length > index + 1 && <>, </>}
                   </span>
                 ))}
-                &nbsp;on <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>.
+                &nbsp;on{' '}
+                <time dateTime={post.frontmatter.created}>
+                  {post.frontmatter.createdPretty}
+                </time>
+                .
               </p>
-              {post.frontmatter.updated !== post.frontmatter.created &&
-              <p>Last updated on <time dateTime={post.frontmatter.updated}>{post.frontmatter.updatedPretty}</time>.</p>
-              }
+              {post.frontmatter.updated !== post.frontmatter.created && (
+                <p>
+                  Last updated on{' '}
+                  <time dateTime={post.frontmatter.updated}>
+                    {post.frontmatter.updatedPretty}
+                  </time>
+                  .
+                </p>
+              )}
             </PostFooter>
           </article>
         </PostContent>
@@ -297,11 +348,11 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({data, location}) =>
       <PostAddition>
         <PostAdditionContent>
           <BioWrapper>
-            <Bio textAlign={`center`} showName={true}/>
+            <Bio textAlign={`center`} showName={true} />
           </BioWrapper>
         </PostAdditionContent>
       </PostAddition>
-      <Comments/>
+      <Comments />
     </Layout>
   );
 };
@@ -310,9 +361,7 @@ export default PostTemplate;
 
 export const query = graphql`
   query PrimaryTag($postId: String!, $primaryTag: String!) {
-    post: markdownRemark(
-      id: { eq: $postId }
-    ) {
+    post: markdownRemark(id: { eq: $postId }) {
       headings {
         depth
       }
@@ -320,6 +369,7 @@ export const query = graphql`
         title
         path
         tags
+        series
         excerpt
         created
         createdPretty: created(formatString: "DD MMMM, YYYY")

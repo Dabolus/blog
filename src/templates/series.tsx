@@ -1,41 +1,64 @@
 import React, { FunctionComponent } from 'react';
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
-import { Post } from '../utils/models';
+import { Post, Series } from '../utils/models';
 import Subheader from '../components/subheader';
 import SEO from '../components/seo';
+import Theme from '../styles/theme';
 import PostGrid from '../components/post-grid';
 
-interface ArchivePageProps {
+interface SeriesTemplateProps {
   data: {
-    allPosts: {
+    series: Series;
+    posts: {
       edges: Array<{ node: Post }>;
     };
   };
   location: Location;
 }
 
-const ArchivePage: FunctionComponent<ArchivePageProps> = ({
+const SeriesTemplate: FunctionComponent<SeriesTemplateProps> = ({
   data,
   location,
 }) => {
-  const posts = data.allPosts.edges.map(node => node.node) as Post[];
+  let series = data.series;
+  const posts = data.posts.edges.map(node => node.node);
+
+  if (!series && posts.length > 0) {
+    series = {
+      name: posts[0].frontmatter.series,
+      color: Theme.layout.primaryColor,
+      icon: null,
+      featured: false,
+    };
+  }
 
   return (
     <Layout bigHeader={false}>
-      <SEO location={location} title={`Archive`} type={`Series`} />
-      <Subheader title={`Archive`} subtitle={`${posts.length} posts`} />
+      <SEO title={series.name} location={location} type={`Series`} />
+      <Subheader
+        title={series.name}
+        subtitle={`${posts.length} posts`}
+        backgroundColor={series.color}
+      />
       <PostGrid posts={posts} />
     </Layout>
   );
 };
 
-export default ArchivePage;
+export default SeriesTemplate;
 
 export const query = graphql`
-  query {
-    allPosts: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
+  query($series: String!) {
+    series: series(name: { eq: $series }) {
+      name
+      color
+    }
+    posts: allMarkdownRemark(
+      filter: {
+        fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" }
+        frontmatter: { series: { eq: $series } }
+      }
       sort: { fields: frontmatter___created, order: DESC }
     ) {
       edges {
@@ -44,14 +67,13 @@ export const query = graphql`
           frontmatter {
             title
             path
-            tags
             series
             excerpt
             created
             createdPretty: created(formatString: "DD MMMM, YYYY")
             featuredImage {
               childImageSharp {
-                sizes(maxWidth: 500, quality: 100) {
+                sizes(maxWidth: 800, quality: 100) {
                   base64
                   aspectRatio
                   src
