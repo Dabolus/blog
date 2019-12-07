@@ -68,12 +68,8 @@ const ArchiveLink = styled(Link)`
   font-size: 0.8em;
   padding: 10px;
   border-radius: 0.3em;
-  transition: background-color 0.5s;
-  background-color: #f2f2f2;
-
-  &:hover {
-    background-color: #e6e6e6;
-  }
+  background-color: ${theme.layout.accent};
+  color: ${theme.layout.primaryOnAccent};
 `;
 
 const PostsPage: FunctionComponent<PostsPageProps> = ({
