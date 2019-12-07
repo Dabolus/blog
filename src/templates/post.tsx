@@ -175,7 +175,7 @@ const PostFooter = styled.footer`
   }
 `;
 
-const FooterTagLink = styled(Link)`
+const FooterSeriesLink = styled(Link)`
   color: ${theme.layout.accent} !important;
   text-decoration: none;
   border-bottom: 0 !important;
@@ -302,16 +302,19 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
             />
             <PostFooter>
               <p>
-                Published under&nbsp;
-                {/* TODO: add series */}
-                {post.frontmatter.tags.map((tag, index) => (
-                  <span key={index}>
-                    <FooterTagLink to={`/tag/${slugify(tag, { lower: true })}`}>
-                      {tag}
-                    </FooterTagLink>
-                    {post.frontmatter.tags.length > index + 1 && <>, </>}
-                  </span>
-                ))}
+                Published
+                {post.frontmatter.series && (
+                  <>
+                    &nbsp;under&nbsp;
+                    <FooterSeriesLink
+                      to={`/series/${slugify(post.frontmatter.series, {
+                        lower: true,
+                      })}`}
+                    >
+                      {post.frontmatter.series}
+                    </FooterSeriesLink>
+                  </>
+                )}
                 &nbsp;on{' '}
                 <time dateTime={post.frontmatter.created}>
                   {post.frontmatter.createdPretty}
