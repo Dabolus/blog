@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100;
+  src: local('Jost* Hairline'), local('Jost-Hairline'),
+    url('./Jost-100-Hairline.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100;
+  src: local('Jost* Hairline Italic'), local('Jost-HairlineItalic'),
+    url('./Jost-100-HairlineItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200;
+  src: local('Jost* Thin'), local('Jost-Thin'),
+    url('./Jost-200-Thin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200;
+  src: local('Jost* Thin Italic'), local('Jost-ThinItalic'),
+    url('./Jost-200-ThinItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Jost* Light'), local('Jost-Light'),
+    url('./Jost-300-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Jost* Light Italic'), local('Jost-LightItalic'),
+    url('./Jost-300-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Jost* Book'), local('Jost-Book'),
+    url('./Jost-400-Book.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Jost* Book Italic'), local('Jost-BookItalic'),
+    url('./Jost-400-BookItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: local('Jost* Medium'), local('Jost-Medium'),
+    url('./Jost-500-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  src: local('Jost* Medium Italic'), local('Jost-MediumItalic'),
+    url('./Jost-500-MediumItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Jost* Semi'), local('Jost-Semi'),
+    url('./Jost-600-Semi.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Jost* Semi Italic'), local('Jost-SemiItalic'),
+    url('./Jost-600-SemiItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Jost* Bold'), local('Jost-Bold'),
+    url('./Jost-700-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Jost* Bold Italic'), local('Jost-BoldItalic'),
+    url('./Jost-700-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: local('Jost* Heavy'), local('Jost-Heavy'),
+    url('./Jost-800-Heavy.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 800;
+  src: local('Jost* Heavy Italic'), local('Jost-HeavyItalic'),
+    url('./Jost-800-HeavyItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: local('Jost* Black'), local('Jost-Black'),
+    url('./Jost-900-Black.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Jost*';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 900;
+  src: local('Jost* Black Italic'), local('Jost-BlackItalic'),
+    url('./Jost-900-BlackItalic.woff2') format('woff2');
+}

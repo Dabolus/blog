@@ -2,10 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
 import styledNormalize from 'styled-normalize';
 import * as prismStyle from 'prismjs/themes/prism-okaidia.css';
+import * as jostStyle from './fonts/jost/jost.css';
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
   ${prismStyle}
+  ${jostStyle}
 
   html {
     box-sizing: border-box;
