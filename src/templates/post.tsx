@@ -276,20 +276,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
           <article className={`post`} ref={readingProgressRef}>
             <PostHeader>
               <PostMeta>
-                {post.frontmatter.tags.length > 0 && (
-                  <Link
-                    to={`/tag/${slugify(post.frontmatter.tags[0], {
-                      lower: true,
-                    })}`}
-                  >
-                    {post.frontmatter.tags[0]}
-                  </Link>
-                )}
-                <time dateTime={post.frontmatter.created}>
-                  {post.frontmatter.createdPretty}
-                </time>
-              </PostMeta>
-              <PostMeta>
                 {post.frontmatter.series && (
                   <Link
                     to={`/series/${slugify(post.frontmatter.series, {
