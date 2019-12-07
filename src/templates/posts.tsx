@@ -53,7 +53,7 @@ const Sidebar = styled.aside`
 
   @media (max-width: ${theme.breakpoints.xl}) {
     margin: 30px auto;
-    border-top: 2px #e5eff5 solid;
+    border-top: 2px ${theme.layout.separator} solid;
     padding: 20px;
     width: 100%;
   }

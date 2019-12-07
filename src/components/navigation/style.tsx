@@ -8,7 +8,7 @@ export const NavContainer = styled.div<{ dark?: boolean }>`
   ${props =>
     props.dark &&
     `
-    background-color: #20232a;
+    background-color: ${theme.layout.accent};
     position: sticky;
     top: 0;
     box-shadow: 0 0 3px rgba(0,0,0,.03), 0 3px 46px rgba(0,0,0,.07);
@@ -60,13 +60,12 @@ export const NavMenuItem = styled.li`
 `;
 
 export const NavLink = styled(Link)`
-  color: #fff;
-  opacity: 0.8;
+  color: ${theme.layout.secondaryOnAccent};
   padding: 16px;
-  transition: opacity 0.5s;
+  transition: color 0.5s;
 
   &:hover {
-    opacity: 1;
+    color: ${theme.layout.primaryOnAccent};
   }
 `;
 
@@ -77,14 +76,13 @@ export const SearchContainer = styled.div`
 
 export const ToggleSearchButton = styled.button`
   cursor: pointer;
-  color: #fff;
-  opacity: 0.8;
+  color: ${theme.layout.secondaryOnAccent};
   background: none;
   outline: none;
   border: 0;
-  transition: opacity 0.5s;
+  transition: color 0.5s;
 
   &:hover {
-    opacity: 1;
+    color: ${theme.layout.primaryOnAccent};
   }
 `;

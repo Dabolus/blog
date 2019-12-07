@@ -2,7 +2,10 @@ export interface DefaultTheme {
   layout: {
     primaryColor: string;
     secondaryColor: string;
+    disabledColor: string;
     accent: string;
+    primaryOnAccent: string;
+    secondaryOnAccent: string;
     defaultBackground: string;
     contentBackground: string;
     cardBackground: string;

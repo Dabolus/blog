@@ -3,9 +3,9 @@ import theme from '../../styles/theme';
 import { Link } from 'gatsby';
 
 export const SeriesContainer = styled.section`
-  background-color: #fff;
-  border-top: 1px #e5eff5 solid;
-  border-bottom: 1px #e5eff5 solid;
+  background-color: ${theme.layout.defaultBackground};
+  border-top: 1px ${theme.layout.separator} solid;
+  border-bottom: 1px ${theme.layout.separator} solid;
   padding: 40px;
   margin-top: 75px;
   text-align: center;

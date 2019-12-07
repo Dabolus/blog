@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Container } from '../common';
 import { Link } from 'gatsby';
+import theme from '../../styles/theme';
 
 export const StyledFooter = styled.footer`
   max-width: 100%;
@@ -31,7 +32,7 @@ export const DesignBy = styled.p`
   a {
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: ${theme.layout.primaryColor};
 
     &:hover {
       text-decoration: underline;
@@ -57,7 +58,7 @@ export const StyledNav = styled.nav`
 `;
 
 const LinkStyle = css`
-  color: #000;
+  color: ${theme.layout.primaryColor};
   text-decoration: none;
 `;
 

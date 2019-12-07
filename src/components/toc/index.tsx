@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import tocbot from 'tocbot';
 import styled from 'styled-components';
+import theme from '../../styles/theme';
 
 interface TocProps {
   /**
@@ -32,12 +33,12 @@ const StyledNav = styled.nav`
   }
 
   .toc-link {
-    color: #808080;
+    color: ${theme.layout.secondaryColor};
     text-decoration: none;
   }
 
   .is-active-link {
-    color: #404040;
+    color: ${theme.layout.primaryColor};
     font-weight: 700;
   }
 `;

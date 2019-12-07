@@ -6,9 +6,9 @@ import { CardProps } from './index';
 
 export const StyledCard = styled(Link)`
   display: block;
-  background-color: #fff;
+  background-color: ${theme.layout.cardBackground};
   border-radius: 3px;
-  box-shadow: 0 1px 1px #e6e6e6, 0 2px 4px #e6e6e6;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.12);
   transition: 0.5s all;
   width: 100%;
   height: 100%;
@@ -16,7 +16,7 @@ export const StyledCard = styled(Link)`
 
   &:hover {
     transform: translate3d(0, -5px, 0);
-    box-shadow: 0 1px 1px #ccc, 0 4px 4px #ccc;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.12);
   }
 `;
 

@@ -38,7 +38,7 @@ const LeftSidebar = styled.div<{ show?: boolean }>`
     position: fixed;
     opacity: ${props => (props.show ? 1 : 0)};
     z-index: 1000;
-    background-color: #fff;
+    background-color: ${theme.layout.contentBackground};
     width: 100% !important;
     max-width: 100%;
     padding: 0 20px;
@@ -49,9 +49,9 @@ const LeftSidebar = styled.div<{ show?: boolean }>`
 
 const PostContent = styled.div`
   margin-top: -5px;
-  border-right: 1px #e5eff5 solid;
-  border-left: 1px #e5eff5 solid;
-  background-color: #fff;
+  border-right: 1px ${theme.layout.separator} solid;
+  border-left: 1px ${theme.layout.separator} solid;
+  background-color: ${theme.layout.contentBackground};
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.03), 0 3px 46px rgba(0, 0, 0, 0.1);
   z-index: 10;
   width: 1035px;
@@ -69,7 +69,7 @@ const PostContent = styled.div`
 
   blockquote {
     border-left: 4px ${theme.layout.primaryColor} solid;
-    background-color: ${theme.layout.defaultBackground};
+    background-color: ${theme.layout.cardBackground};
     margin: 30px 0;
     padding: 5px 20px;
     border-radius: 0.3em;
@@ -87,7 +87,7 @@ const PostContent = styled.div`
   }
 
   h2 {
-    border-top: 1px solid #ececec;
+    border-top: 1px solid ${theme.layout.separator};
     margin-top: 44px;
     padding-top: 40px;
     line-height: 1.2;
@@ -104,7 +104,7 @@ const PostContent = styled.div`
   }
 
   hr {
-    border-top: 1px solid #ececec;
+    border-top: 1px solid ${theme.layout.separator};
     border-bottom: 0;
     margin-top: 44px;
     margin-bottom: 40px;
@@ -164,9 +164,9 @@ const PostTitle = styled.h1`
 `;
 
 const PostFooter = styled.footer`
-  background-color: #fafafa;
+  background-color: ${theme.layout.cardBackground};
   font-size: 0.8em;
-  color: #666;
+  color: ${theme.layout.secondaryColor};
   padding: 40px;
   line-height: 1em;
 
@@ -176,15 +176,15 @@ const PostFooter = styled.footer`
 `;
 
 const FooterTagLink = styled(Link)`
-  color: #000 !important;
+  color: ${theme.layout.accent} !important;
   text-decoration: none;
   border-bottom: 0 !important;
 `;
 
 const PostAddition = styled.section`
-  background-color: #fff;
-  border-top: 1px #e5eff5 solid;
-  border-bottom: 1px #e5eff5 solid;
+  background-color: ${theme.layout.defaultBackground};
+  border-top: 1px ${theme.layout.separator} solid;
+  border-bottom: 1px ${theme.layout.separator} solid;
   z-index: 700;
   position: relative;
   padding: 40px;

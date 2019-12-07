@@ -10,19 +10,22 @@ import theme from '../../styles/theme';
 interface ReadingProgressProps {
   target: RefObject<HTMLElement>;
   color?: string;
+  border?: string;
 }
 
-const ReadingProgressBar = styled.div<{ color?: string }>`
+const ReadingProgressBar = styled.div<{ color?: string; border?: string }>`
   position: sticky;
   height: 5px;
   top: 70px;
-  background-color: ${props =>
-    props.color ? props.color : theme.layout.primaryColor};
+  background-color: ${props => props.color || theme.layout.primaryColor};
+  box-shadow: 0 0.5px 0.5px
+    ${props => props.border || theme.layout.defaultBackground};
   z-index: 500;
 `;
 
 const ReadingProgress: FunctionComponent<ReadingProgressProps> = ({
   color,
+  border,
   target,
 }) => {
   const [readingProgress, setReadingProgress] = useState<number>(0);
@@ -60,6 +63,7 @@ const ReadingProgress: FunctionComponent<ReadingProgressProps> = ({
     <ReadingProgressBar
       style={{ width: `${readingProgress}%` }}
       color={color}
+      border={border}
     />
   );
 };

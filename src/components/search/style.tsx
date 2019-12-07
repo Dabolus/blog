@@ -6,7 +6,7 @@ export const SearchBox = styled.div<{ readonly open: boolean }>`
   display: ${props => (props.open ? 'block' : 'none')};
   position: absolute;
   width: 400px;
-  background-color: #fff;
+  background-color: ${theme.layout.primaryColor};
   left: -338px;
   top: 40px;
   border-radius: 5px;
@@ -17,7 +17,7 @@ export const SearchBox = styled.div<{ readonly open: boolean }>`
     display: block;
     width: 16px;
     height: 16px;
-    background-color: #fff;
+    background-color: ${theme.layout.cardBackground};
     position: absolute;
     top: -8px;
     right: 38px;
@@ -35,20 +35,25 @@ export const SearchBox = styled.div<{ readonly open: boolean }>`
 `;
 
 export const SearchInput = styled.input`
-  background-color: #fff;
+  color: ${theme.layout.primaryColor};
+  background-color: ${theme.layout.cardBackground};
   display: block;
   width: 100%;
   border: 0;
   padding: 15px;
   outline: none;
-  border-radius: 5px;
+  border-radius: 5px 0;
+
+  &::placeholder {
+    color: ${theme.layout.disabledColor};
+  }
 `;
 
 export const ResultsTitle = styled.h5`
   padding: 5px 15px;
-  background-color: #000;
+  background-color: ${theme.layout.contentBackground};
   margin: 0;
-  color: #fff;
+  color: ${theme.layout.secondaryColor};
 `;
 
 export const SearchResults = styled.ul`
@@ -62,12 +67,8 @@ export const SearchResults = styled.ul`
 
 export const SearchResult = styled.li<{ selected: boolean }>`
   line-height: 1.4em;
-
-  ${props =>
-    props.selected &&
-    `
-    background-color: #f2f2f2;
-  `};
+  background-color: ${({ selected }) =>
+    selected ? theme.layout.cardBackground : theme.layout.contentBackground};
 `;
 
 export const ResultLink = styled(Link)`

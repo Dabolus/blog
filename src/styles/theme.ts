@@ -4,7 +4,10 @@ const theme: DefaultTheme = {
   layout: {
     primaryColor: 'var(--theme-primary-color)',
     secondaryColor: 'var(--theme-secondary-color)',
+    disabledColor: 'var(--theme-disabled-color)',
     accent: 'var(--theme-accent)',
+    primaryOnAccent: 'var(--theme-primary-on-accent)',
+    secondaryOnAccent: 'var(--theme-secondary-on-accent)',
     defaultBackground: 'var(--theme-default-background)',
     contentBackground: 'var(--theme-content-background)',
     cardBackground: 'var(--theme-card-background)',

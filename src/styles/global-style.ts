@@ -14,10 +14,12 @@ const GlobalStyle = createGlobalStyle`
   ${prismCommandLineStyles}
 
   html {
-    box-sizing: border-box;
     --theme-primary-color: #fff;
     --theme-secondary-color: rgba(255, 255, 255, 0.7);
-    --theme-accent: #ff6659;
+    --theme-disabled-color: rgba(255, 255, 255, 0.5);
+    --theme-accent: #80cbc4;
+    --theme-primary-on-accent: rgba(0, 0, 0, 0.87);
+    --theme-secondary-on-accent: rgba(0, 0, 0, 0.60);
     --theme-default-background: #212121;
     --theme-content-background: #303030;
     --theme-card-background: #424242;
@@ -25,8 +27,11 @@ const GlobalStyle = createGlobalStyle`
 
     @media (light-level: washed), (prefers-color-scheme: light) {
       --theme-primary-color: rgba(0, 0, 0, 0.87);
-      --theme-secondary-color: rgba(0, 0, 0, 0.54);
-      --theme-accent: #d32f2f;
+      --theme-secondary-color: rgba(0, 0, 0, 0.60);
+      --theme-disabled-color: rgba(0, 0, 0, 0.38);
+      --theme-accent: #005b4f;
+      --theme-primary-on-accent: #fff;
+      --theme-secondary-on-accent: rgba(255, 255, 255, 0.7);
       --theme-default-background: #f0f0f0;
       --theme-content-background: #fafafa;
       --theme-card-background: #fff;
@@ -34,7 +39,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  body {
+  html, body {
+    box-sizing: border-box;
+    background-color: ${theme.layout.defaultBackground};
+    color: ${theme.layout.primaryColor};
     font-family: ${theme.fonts.base};
     line-height: 1.9em;
   }
@@ -48,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: #000;
+    color: ${theme.layout.primaryColor};
     text-decoration: none;
   }
 

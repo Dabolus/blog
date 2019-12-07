@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
   background: ${theme.components.header.background};
   flex-direction: column;
   height: ${theme.components.header.height};
-  border-bottom: 2px #ededed solid;
+  border-bottom: 2px ${theme.layout.separator} solid;
 
   @media (max-width: ${theme.breakpoints.sm}) {
     height: 30vh;
@@ -32,7 +32,7 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.h1`
   display: block;
-  color: #fff;
+  color: ${theme.layout.primaryColor};
   text-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
 `;
 
@@ -42,5 +42,5 @@ export const Description = styled.h2`
 `;
 
 export const StyledTopics = styled(Typed)`
-  border-bottom: 3px #000 solid;
+  border-bottom: 3px ${theme.layout.primaryColor} solid;
 `;
