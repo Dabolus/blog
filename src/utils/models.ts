@@ -50,7 +50,7 @@ export interface Post {
     title: string;
     path: string;
     tags: string[];
-    series: string;
+    series?: string;
     excerpt: string;
     created: string;
     createdPretty: string;
