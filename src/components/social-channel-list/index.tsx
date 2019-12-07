@@ -4,12 +4,9 @@ import styled from 'styled-components';
 import {
   FaFacebook,
   FaGithub,
-  FaInstagram,
   FaLinkedin,
-  FaQuestionCircle,
-  FaTwitch,
   FaTwitter,
-  FaYoutube,
+  FaTelegram,
 } from 'react-icons/fa';
 
 interface SocialChannelListProps {
@@ -25,17 +22,11 @@ const createSocialIcon = (channel: keyof SocialChannels) => {
       return <FaFacebook />;
     case 'github':
       return <FaGithub />;
-    case 'instagram':
-      return <FaInstagram />;
     case 'linkedin':
       return <FaLinkedin />;
-    case 'twitch':
-      return <FaTwitch />;
-    case 'youtube':
-      return <FaYoutube />;
+    case 'telegram':
+      return <FaTelegram />;
   }
-
-  return <FaQuestionCircle />;
 };
 
 const StyledSocialChannels = styled.ul`
@@ -60,20 +51,13 @@ const SocialChannelList: FunctionComponent<SocialChannelListProps> = ({
   channels,
 }) => (
   <StyledSocialChannels>
-    {Object.keys(channels)
-      .filter(c => channels[c] !== '')
-      .map((channel, index) => (
-        <StyledSocialChannel key={index}>
-          <a
-            href={channels[channel]}
-            target={`_blank`}
-            rel={`noopener`}
-            aria-label={channel}
-          >
-            {createSocialIcon(channel as keyof SocialChannels)}
-          </a>
-        </StyledSocialChannel>
-      ))}
+    {Object.entries(channels).map(([channel, link]) => (
+      <StyledSocialChannel key={channel}>
+        <a href={link} target={channel} rel={`noopener`} aria-label={channel}>
+          {createSocialIcon(channel as keyof SocialChannels)}
+        </a>
+      </StyledSocialChannel>
+    ))}
   </StyledSocialChannels>
 );
 

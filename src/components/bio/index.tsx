@@ -48,10 +48,8 @@ const Bio: FunctionComponent<BioProps> = ({
               facebook
               twitter
               linkedin
-              instagram
-              youtube
               github
-              twitch
+              telegram
             }
           }
         }

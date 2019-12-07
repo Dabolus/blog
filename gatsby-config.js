@@ -26,18 +26,14 @@ module.exports = {
     ],
     search: true,
     author: {
-      name: `nehalem`,
-      description: `I'm <strong>nehalem</strong>, a Gatsby theme by 
-      <a href="https://nehalist.io" rel="noopener" target="_blank">nehalist.io</a>. If you like what you see feel free to give a 
-      <a href="https://github.com/nehalist/gatsby-theme-nehalem" rel="noopener" target="_blank">star on GitHub!</a>`,
+      name: `Giorgio Garasto`,
+      description: `Hi! I'm <strong>Giorgio Garasto</strong>, a Software Engineer trying to make the web a better place since 2004.`,
       social: {
-        facebook: ``,
-        twitter: `https://twitter.com/nehalist`,
-        linkedin: `https://www.linkedin.com/in/kevin-hirczy-7a9377106/`,
-        instagram: ``,
-        youtube: ``,
-        github: `https://github.com/nehalist`,
-        twitch: ``,
+        facebook: `https://fb.me/giorgio.garasto`,
+        twitter: `https://twitter.com/Dabolus`,
+        linkedin: `https://linkedin.com/in/GiorgioGarasto`,
+        github: `https://git.io/Dabolus`,
+        telegram: `https://t.me/Dabolus`,
       },
     },
   },
@@ -51,8 +47,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `nehalem - A Gatsby theme`,
-        short_name: `nehalem`,
+        name: `Giorgio Garasto's Blog`,
+        short_name: `GG's Blog`,
         start_url: `/`,
         background_color: `#a4cbb8`,
         theme_color: `#a4cbb8`,
