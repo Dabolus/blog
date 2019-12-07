@@ -14,7 +14,7 @@ In case you want to create your own custom pages Nehalem provides a bunch of use
 
 The basic structure for pages is:
 
-```typescript jsx
+```tsx { numberLines: true }
 import React, { FunctionComponent } from 'react';
 import Layout from '@nehalist/gatsby-theme-nehalem/src/components/layout';
 import SEO from '@nehalist/gatsby-theme-nehalem/src/components/seo';
@@ -41,7 +41,7 @@ The `<SEO />` component takes care of optimizing everything in terms of SEO. The
 
 Components often have some props. The `FunctionDecorator` interface allows creating fully typed components like this:
 
-```typescript jsx
+```tsx { numberLines: true }
 import React, { FunctionComponent } from 'react';
 import Layout from '@nehalist/gatsby-theme-nehalem/src/components/layout';
 import SEO from '@nehalist/gatsby-theme-nehalem/src/components/seo';
@@ -74,7 +74,7 @@ export default CustomPage;
 
 Some components, like the `PageTemplate` use a small component for a stylish subheader:
 
-```typescript jsx
+```tsx { numberLines: true }
 import React, { FunctionComponent } from 'react';
 import Layout from '@nehalist/gatsby-theme-nehalem/src/components/layout';
 import SEO from '@nehalist/gatsby-theme-nehalem/src/components/seo';

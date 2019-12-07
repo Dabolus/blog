@@ -21,7 +21,7 @@ change our appearance we'll have to shadow our `theme.ts` file.
 
 Just create this file under `src/@nehalist/gatsby-theme-nehalem/styles/theme.ts` and add the following content:
 
-```typescript jsx
+```tsx { numberLines: true }
 const theme: DefaultTheme = {
   layout: {
     backgroundColor: `#fafafa`,

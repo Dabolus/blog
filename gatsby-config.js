@@ -114,13 +114,36 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-autolink-headers`,
-          `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
             },
           },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              noInlineHighlight: true,
+              prompt: {
+                user: `giorgio`,
+                host: `garasto.blog`,
+                global: false,
+              },
+            },
+          },
+          {
+            resolve: `gatsby-remark-music`,
+            options: {
+              color: `var(--theme-primary-color)`,
+            },
+          },
+          `gatsby-remark-smartypants`,
         ],
       },
     },

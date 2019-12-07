@@ -1,13 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
 import styledNormalize from 'styled-normalize';
-import * as prismStyle from 'prismjs/themes/prism-okaidia.css';
-import * as jostStyle from './fonts/jost/jost.css';
+import * as jostStyles from './fonts/jost/jost.css';
+import * as prismTomorrowThemeStyles from 'prismjs/themes/prism-tomorrow.css';
+import * as prismLineNumberStyles from 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import * as prismCommandLineStyles from 'prismjs/plugins/command-line/prism-command-line.css';
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
-  ${prismStyle}
-  ${jostStyle}
+  ${jostStyles}
+  ${prismTomorrowThemeStyles}
+  ${prismLineNumberStyles}
+  ${prismCommandLineStyles}
 
   html {
     box-sizing: border-box;
@@ -50,6 +54,11 @@ const GlobalStyle = createGlobalStyle`
 
   .gatsby-highlight {
     max-width: 100% !important;
+    background-color: #2d2d2d;
+    border-radius: 0.3em;
+    margin: 0.5em 0;
+    padding: 1em;
+    overflow: auto;
   }
 
   .gatsby-highlight-code-line {
@@ -59,6 +68,12 @@ const GlobalStyle = createGlobalStyle`
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 0.75em;
+  }
+
+  pre[class*='language-'].line-numbers {
+    padding: 0;
+    padding-left: 2.8em;
+    overflow: initial;
   }
 `;
 
