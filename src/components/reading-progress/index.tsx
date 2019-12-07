@@ -15,12 +15,15 @@ interface ReadingProgressProps {
 
 const ReadingProgressBar = styled.div<{ color?: string; border?: string }>`
   position: sticky;
+  width: 100%;
   height: 5px;
   top: 70px;
   background-color: ${props => props.color || theme.layout.primaryColor};
   box-shadow: 0 0.5px 0.5px
     ${props => props.border || theme.layout.defaultBackground};
   z-index: 500;
+  transform-origin: left center;
+  will-change: transform;
 `;
 
 const ReadingProgress: FunctionComponent<ReadingProgressProps> = ({
@@ -48,10 +51,10 @@ const ReadingProgress: FunctionComponent<ReadingProgressProps> = ({
     }
 
     if (windowScrollTop > totalHeight) {
-      return setReadingProgress(100);
+      return setReadingProgress(1);
     }
 
-    setReadingProgress((windowScrollTop / totalHeight) * 100);
+    setReadingProgress(windowScrollTop / totalHeight);
   };
 
   useEffect(() => {
@@ -61,7 +64,7 @@ const ReadingProgress: FunctionComponent<ReadingProgressProps> = ({
 
   return (
     <ReadingProgressBar
-      style={{ width: `${readingProgress}%` }}
+      style={{ transform: `scaleX(${readingProgress})` }}
       color={color}
       border={border}
     />
