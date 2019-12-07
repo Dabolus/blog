@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { MenuItem } from '../../utils/models';
 import {
   Copyright,
-  DesignBy,
   FooterContainer,
   FooterMenuItem,
   FooterMenuLink,
@@ -37,14 +36,8 @@ const Footer: FunctionComponent<FooterProps> = ({ menu, owner }) => (
       </StyledNav>
       <div>
         <Copyright>
-          <strong>{owner}</strong>&nbsp;&copy; {new Date().getFullYear()}
+          &copy; {new Date().getFullYear()} <strong>{owner}</strong>
         </Copyright>
-        <DesignBy>
-          Theme by{' '}
-          <a href={`https://nehalist.io`} target={`_blank`} rel={`noopener`}>
-            nehalist.io
-          </a>
-        </DesignBy>
       </div>
     </FooterContainer>
   </StyledFooter>

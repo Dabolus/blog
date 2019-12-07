@@ -31,6 +31,9 @@ const Layout: FunctionComponent<LayoutProps> = ({
             path
           }
           search
+          author {
+            name
+          }
         }
       }
     }
@@ -58,7 +61,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
       <main>{children}</main>
       <Footer
         menu={data.site.siteMetadata.footerMenu}
-        owner={data.site.siteMetadata.title}
+        owner={data.site.siteMetadata.author.name}
       />
     </>
   );

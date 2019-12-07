@@ -5,11 +5,10 @@ import theme from '../../styles/theme';
 
 export const StyledFooter = styled.footer`
   max-width: 100%;
-  padding: 10px 0;
+  padding: 36px 0;
   z-index: 700;
   position: relative;
   font-size: 0.9em;
-  margin-top: 50px;
 `;
 
 export const FooterContainer = styled(Container)`
@@ -22,22 +21,6 @@ export const FooterContainer = styled(Container)`
 
 export const Copyright = styled.p`
   margin: 0;
-`;
-
-export const DesignBy = styled.p`
-  margin: 0;
-  opacity: 0.8;
-  font-size: 0.8em;
-
-  a {
-    font-weight: bold;
-    text-decoration: none;
-    color: ${theme.layout.primaryColor};
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 `;
 
 export const StyledNav = styled.nav`
