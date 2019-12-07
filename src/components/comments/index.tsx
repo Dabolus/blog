@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from "react";
+import React, { FunctionComponent } from 'react';
 
 /**
  * Placeholder which is attached under every post. Can be shadowed to

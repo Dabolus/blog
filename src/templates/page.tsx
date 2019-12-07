@@ -1,12 +1,12 @@
-import React, {FunctionComponent} from "react";
-import Layout from "../components/layout";
-import Subheader from "../components/subheader";
-import {Page} from "../utils/models";
-import Theme from "../styles/theme";
-import {Container} from "../components/common";
-import styled from "styled-components";
-import PageSidebarContent from "../components/page-sidebar-content";
-import SEO from "../components/seo";
+import React, { FunctionComponent } from 'react';
+import Layout from '../components/layout';
+import Subheader from '../components/subheader';
+import { Page } from '../utils/models';
+import Theme from '../styles/theme';
+import { Container } from '../components/common';
+import styled from 'styled-components';
+import PageSidebarContent from '../components/page-sidebar-content';
+import SEO from '../components/seo';
 
 interface PageTemplateProps {
   pathContext: {
@@ -36,7 +36,10 @@ const PageSidebar = styled.aside`
   }
 `;
 
-const PageTemplate: FunctionComponent<PageTemplateProps> = ({pathContext, location}) => {
+const PageTemplate: FunctionComponent<PageTemplateProps> = ({
+  pathContext,
+  location,
+}) => {
   const page = pathContext.page;
 
   return (
@@ -46,9 +49,12 @@ const PageTemplate: FunctionComponent<PageTemplateProps> = ({pathContext, locati
         description={page.frontmatter.excerpt}
         location={location}
       />
-      <Subheader title={page.frontmatter.title} backgroundColor={Theme.layout.primaryColor}/>
+      <Subheader
+        title={page.frontmatter.title}
+        backgroundColor={Theme.layout.primaryColor}
+      />
       <PageContainer>
-        <section dangerouslySetInnerHTML={{__html: page.html}}/>
+        <section dangerouslySetInnerHTML={{ __html: page.html }} />
         <PageSidebar>
           <PageSidebarContent />
         </PageSidebar>

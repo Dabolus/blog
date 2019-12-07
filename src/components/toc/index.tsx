@@ -1,6 +1,6 @@
-import React, {FunctionComponent, useEffect} from "react";
+import React, { FunctionComponent, useEffect } from 'react';
 import tocbot from 'tocbot';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface TocProps {
   /**
@@ -42,7 +42,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Toc: FunctionComponent<TocProps> = ({onClick}) => {
+const Toc: FunctionComponent<TocProps> = ({ onClick }) => {
   useEffect(() => {
     tocbot.init({
       tocSelector: `.toc`,
@@ -55,9 +55,7 @@ const Toc: FunctionComponent<TocProps> = ({onClick}) => {
     return () => tocbot.destroy();
   });
 
-  return (
-    <StyledNav className={`toc`} onClick={onClick} />
-  );
+  return <StyledNav className={`toc`} onClick={onClick} />;
 };
 
 export default Toc;

@@ -1,27 +1,30 @@
-import React, {FunctionComponent} from "react";
-import Layout from "../components/layout";
-import {graphql} from "gatsby";
-import {Post, Tag} from "../utils/models";
-import Subheader from "../components/subheader";
-import SEO from "../components/seo";
-import Theme from "../styles/theme";
-import PostGrid from "../components/post-grid";
+import React, { FunctionComponent } from 'react';
+import Layout from '../components/layout';
+import { graphql } from 'gatsby';
+import { Post, Tag } from '../utils/models';
+import Subheader from '../components/subheader';
+import SEO from '../components/seo';
+import Theme from '../styles/theme';
+import PostGrid from '../components/post-grid';
 
 interface TagTemplateProps {
   data: {
     tag: Tag;
     posts: {
       edges: Array<{ node: Post }>;
-    }
+    };
   };
   location: Location;
 }
 
-const TagTemplate: FunctionComponent<TagTemplateProps> = ({data, location}) => {
-  let tag     = data.tag;
+const TagTemplate: FunctionComponent<TagTemplateProps> = ({
+  data,
+  location,
+}) => {
+  let tag = data.tag;
   const posts = data.posts.edges.map(node => node.node);
 
-  if (! tag && posts.length > 0) {
+  if (!tag && posts.length > 0) {
     tag = {
       name: posts[0].frontmatter.tags[0],
       color: Theme.layout.primaryColor,
@@ -32,12 +35,12 @@ const TagTemplate: FunctionComponent<TagTemplateProps> = ({data, location}) => {
 
   return (
     <Layout bigHeader={false}>
-      <SEO
+      <SEO title={tag.name} location={location} type={`Series`} />
+      <Subheader
         title={tag.name}
-        location={location}
-        type={`Series`}
+        subtitle={`${posts.length} posts`}
+        backgroundColor={tag.color}
       />
-      <Subheader title={tag.name} subtitle={`${posts.length} posts`} backgroundColor={tag.color}/>
       <PostGrid posts={posts} />
     </Layout>
   );
@@ -53,10 +56,10 @@ export const query = graphql`
     }
     posts: allMarkdownRemark(
       filter: {
-        fileAbsolutePath: {regex: "/(posts)/.*\\\\.md$/"},
-        frontmatter: {tags: {eq: $tag}}
-      },
-      sort: {fields: frontmatter___created, order: DESC}
+        fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" }
+        frontmatter: { tags: { eq: $tag } }
+      }
+      sort: { fields: frontmatter___created, order: DESC }
     ) {
       edges {
         node {

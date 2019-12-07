@@ -1,19 +1,19 @@
-import styled from "styled-components";
-import {Link} from "gatsby";
-import Theme from "../../styles/theme";
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import Theme from '../../styles/theme';
 
 export const SearchBox = styled.div<{ readonly open: boolean }>`
-  display: ${props => props.open ? 'block' : 'none'};
+  display: ${props => (props.open ? 'block' : 'none')};
   position: absolute;
   width: 400px;
   background-color: #fff;
   left: -338px;
   top: 40px;
   border-radius: 5px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, .03), 0 3px 46px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03), 0 3px 46px rgba(0, 0, 0, 0.1);
 
   &::before {
-    content: " ";
+    content: ' ';
     display: block;
     width: 16px;
     height: 16px;
@@ -63,7 +63,9 @@ export const SearchResults = styled.ul`
 export const SearchResult = styled.li<{ selected: boolean }>`
   line-height: 1.4em;
 
-  ${props => props.selected && `
+  ${props =>
+    props.selected &&
+    `
     background-color: #f2f2f2;
   `};
 `;

@@ -1,11 +1,13 @@
-import styled from "styled-components";
-import {Container} from "../common";
-import Theme from "../../styles/theme";
-import {Link} from "gatsby";
+import styled from 'styled-components';
+import { Container } from '../common';
+import Theme from '../../styles/theme';
+import { Link } from 'gatsby';
 
-export const NavContainer = styled.div<{ dark?: boolean}>`
+export const NavContainer = styled.div<{ dark?: boolean }>`
   z-index: 1000;
-  ${props => props.dark && `
+  ${props =>
+    props.dark &&
+    `
     background-color: #20232a;
     position: sticky;
     top: 0;
@@ -36,7 +38,9 @@ export const NavMenu = styled.ul<{ mobile?: boolean }>`
   margin: 0;
   padding: 0;
 
-  ${props => props.mobile && `
+  ${props =>
+    props.mobile &&
+    `
     @media (max-width: ${Theme.breakpoints.sm}) {
       width: 80%;
       overflow-x: auto;
@@ -57,9 +61,9 @@ export const NavMenuItem = styled.li`
 
 export const NavLink = styled(Link)`
   color: #fff;
-  opacity: .8;
+  opacity: 0.8;
   padding: 16px;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 
   &:hover {
     opacity: 1;
@@ -74,11 +78,11 @@ export const SearchContainer = styled.div`
 export const ToggleSearchButton = styled.button`
   cursor: pointer;
   color: #fff;
-  opacity: .8;
+  opacity: 0.8;
   background: none;
   outline: none;
   border: 0;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 
   &:hover {
     opacity: 1;

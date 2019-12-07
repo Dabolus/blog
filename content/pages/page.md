@@ -1,6 +1,6 @@
 ---
 title: Sample page
-path: "/page"
+path: '/page'
 excerpt: A sample page.
 ---
 
@@ -43,7 +43,7 @@ Tecto vacet sparsis: interrumpente illo barbaque solidum voce est premit nigra;
 cepisse, opifex carchesia quae aestus coeunt. Peleus virilem Cinyphiumque Iovem?
 Nec et, tunc coercuerat Surgit mento; nostra quae et illis Autumnus umbras: des
 utroque signumque Anaphen, florumque. Sit rerum os fossas potuit novandum
-verbere Corythus. In acta **ille**, aut fata perque commoda *vale*: unum.
+verbere Corythus. In acta **ille**, aut fata perque commoda _vale_: unum.
 
 - Falsa potest Iuppiter
 - Fiunt elisarum consilium pectore
@@ -51,8 +51,8 @@ verbere Corythus. In acta **ille**, aut fata perque commoda *vale*: unum.
 
 **Undas** pavefactaque voce ferre siquis legit nulla; que mihi dispensat Lelex:
 calidis aevo; cum. Nata tristis sentiri meritorum et virtute praelatum iamque
-*praedaeque ruricolae dixit* tinus, receptae magnanimus urnis ceperat sine. Sic
-si *neptem vides* a parte corpora nec summis celeres **vestem** quondam
+_praedaeque ruricolae dixit_ tinus, receptae magnanimus urnis ceperat sine. Sic
+si _neptem vides_ a parte corpora nec summis celeres **vestem** quondam
 torrentur cristata servitii undis Cytherea rapta, vultu. Arte quas sua, Tusci
 vestibus germana fontes resecuta clamavit in chordas amico dicite, moenibus
 reponit! Liquidis et pars structa frigus namque, non quantas hunc hoc: et
@@ -61,7 +61,7 @@ reponit! Liquidis et pars structa frigus namque, non quantas hunc hoc: et
 Lorem **markdownum** ille Salmacis pallida filia, ducis sanguis. Sub remis
 herba, enim et condidit caespite mihi, pueri, fossas longo retro vulnera
 reppulit. Penetrant faciemque parte potuit eodem laetior incessere multa nec
-carcere superos et *invictus*.
+carcere superos et _invictus_.
 
     technologyPpi(buffer_del(halfScrolling, windowsCloudWeb.file_progressive(
             terminalEmoticonMemory), printer_laser + saasFifo), download + tiger

@@ -1,8 +1,8 @@
-import React, {FunctionComponent} from "react";
-import styled from "styled-components";
-import {graphql, Link, useStaticQuery} from "gatsby";
-import Theme from "../../styles/theme";
-import Img from "gatsby-image";
+import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import Theme from '../../styles/theme';
+import Img from 'gatsby-image';
 
 interface LogoProps {
   title: string;
@@ -23,10 +23,13 @@ const HomeLink = styled(Link)`
   height: 30px;
 `;
 
-const Logo: FunctionComponent<LogoProps> = ({title}) => {
+const Logo: FunctionComponent<LogoProps> = ({ title }) => {
   const logo = useStaticQuery(graphql`
     query {
-      file(sourceInstanceName: {eq: "themeAssets"}, name: {eq: "nehalist-gatsby"}) {
+      file(
+        sourceInstanceName: { eq: "themeAssets" }
+        name: { eq: "nehalist-gatsby" }
+      ) {
         childImageSharp {
           fixed(width: 30, height: 30) {
             ...GatsbyImageSharpFixed
@@ -38,10 +41,9 @@ const Logo: FunctionComponent<LogoProps> = ({title}) => {
 
   return (
     <HomeLink to={`/`}>
-      <LogoImage fixed={logo.file.childImageSharp.fixed} alt={title}/>
+      <LogoImage fixed={logo.file.childImageSharp.fixed} alt={title} />
     </HomeLink>
   );
-}
-;
+};
 
 export default Logo;

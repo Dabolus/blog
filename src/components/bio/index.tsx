@@ -1,9 +1,9 @@
-import React, {CSSProperties, FunctionComponent} from "react";
-import styled from "styled-components";
-import {graphql, useStaticQuery} from "gatsby";
-import {SiteMetadata} from "../../utils/models";
-import SocialChannelList from "../social-channel-list";
-import Avatar from "../avatar";
+import React, { CSSProperties, FunctionComponent } from 'react';
+import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
+import { SiteMetadata } from '../../utils/models';
+import SocialChannelList from '../social-channel-list';
+import Avatar from '../avatar';
 
 interface BioProps {
   textAlign: 'left' | 'center' | 'right' | 'justify';
@@ -30,7 +30,11 @@ const AuthorName = styled.h3`
   margin: 10px;
 `;
 
-const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle, showName = false}) => {
+const Bio: FunctionComponent<BioProps> = ({
+  textAlign = 'center',
+  avatarStyle,
+  showName = false,
+}) => {
   const metadata = useStaticQuery<SiteMetadata>(graphql`
     query MetadataQuery {
       site {
@@ -59,8 +63,10 @@ const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle, sh
     <StyledBio textAlign={textAlign}>
       <Avatar alt={author.name} style={avatarStyle} />
       {showName && <AuthorName>{author.name}</AuthorName>}
-      <AuthorDescription dangerouslySetInnerHTML={{__html: author.description}}/>
-      <SocialChannelList channels={author.social}/>
+      <AuthorDescription
+        dangerouslySetInnerHTML={{ __html: author.description }}
+      />
+      <SocialChannelList channels={author.social} />
     </StyledBio>
   );
 };

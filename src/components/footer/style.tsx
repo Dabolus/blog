@@ -1,13 +1,13 @@
-import styled, {css} from "styled-components";
-import {Container} from "../common";
-import {Link} from "gatsby";
+import styled, { css } from 'styled-components';
+import { Container } from '../common';
+import { Link } from 'gatsby';
 
 export const StyledFooter = styled.footer`
   max-width: 100%;
   padding: 10px 0;
   z-index: 700;
   position: relative;
-  font-size: .9em;
+  font-size: 0.9em;
   margin-top: 50px;
 `;
 
@@ -25,8 +25,8 @@ export const Copyright = styled.p`
 
 export const DesignBy = styled.p`
   margin: 0;
-  opacity: .8;
-  font-size: .8em;
+  opacity: 0.8;
+  font-size: 0.8em;
 
   a {
     font-weight: bold;

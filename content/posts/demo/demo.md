@@ -1,8 +1,8 @@
 ---
-title: "Demo"
-path: "/lipsum"
-tags: ["Demo"]
-featuredImage: "./cover.jpg"
+title: 'Demo'
+path: '/lipsum'
+tags: ['Demo']
+featuredImage: './cover.jpg'
 excerpt: A simple demo post to show all kinds of different elements.
 created: 2019-07-18
 updated: 2019-07-18
@@ -21,7 +21,7 @@ protulit trunci legumque munus nomen; non.
 
 ## Et pateret plebe
 
-Sponte femina confusaque Ledam sive, litusque in ferat mergit *illic*, de. Verba
+Sponte femina confusaque Ledam sive, litusque in ferat mergit _illic_, de. Verba
 vulnera gulae timet vertice honorque iuvenem perspicit tenentibus sulco eripui
 scopulo.
 
@@ -61,7 +61,7 @@ clarus et de bellica et.
 ## Meae furor se et meris quinos cogor
 
 > Lorem markdownum, quinquennia; mentes teli mixto rumpitque frustra meae hic
-positi carpsere cessit: cruento quantoque ab. Fistula luctus.
+> positi carpsere cessit: cruento quantoque ab. Fistula luctus.
 
 ![cat](cat.jpg)
 
@@ -69,7 +69,7 @@ positi carpsere cessit: cruento quantoque ab. Fistula luctus.
 
 Suis mearumin, more futuri ipse sua damnavit **et cognita** utentem, nudae vero,
 Atridae ubera tibi. Est irascere Marte in metuens circuit auster. Qui redire
-Themis si gesserunt, non facit hoc nomen stillanti: *sunt*. Ferae circum,
+Themis si gesserunt, non facit hoc nomen stillanti: _sunt_. Ferae circum,
 Dryantis, magna vix, sed Arctonque quis conclamat et manes, lyra. Ter humi
 iunctam magnum; quem potentia.
 
@@ -87,4 +87,4 @@ dicta ortus. Et formae.
 
 ---
 
-*Cover image by my cat*
+_Cover image by my cat_

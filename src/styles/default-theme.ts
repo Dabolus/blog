@@ -17,7 +17,7 @@ export interface DefaultTheme {
   components: {
     container: {
       width: string;
-    }
+    };
     header: {
       height: string;
       background: string;

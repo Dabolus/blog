@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Theme from "../../styles/theme";
-import {Link} from "gatsby";
+import styled from 'styled-components';
+import Theme from '../../styles/theme';
+import { Link } from 'gatsby';
 
 export const TagContainer = styled.section`
   background-color: #fff;
@@ -30,7 +30,7 @@ export const StyledTagList = styled.ul`
 
 export const StyledTag = styled.li`
   margin: 0 35px;
-  transition: .5s all;
+  transition: 0.5s all;
 
   &:hover {
     transform: scale(1.04);
@@ -61,5 +61,5 @@ export const TagArchiveLinkWrapper = styled.div`
 
 export const TagArchiveLink = styled(Link)`
   font-style: italic;
-  font-size: .8em;
+  font-size: 0.8em;
 `;

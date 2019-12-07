@@ -1,4 +1,4 @@
-import {DefaultTheme} from "./default-theme";
+import { DefaultTheme } from './default-theme';
 
 const Theme: DefaultTheme = {
   layout: {
@@ -14,7 +14,8 @@ const Theme: DefaultTheme = {
     xl: `1300px`,
   },
   fonts: {
-    base: `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, ` +
+    base:
+      `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, ` +
       `Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif`,
   },
   components: {
