@@ -36,8 +36,9 @@ const LeftSidebar = styled.div<{ show?: boolean }>`
 
   @media (max-width: ${theme.breakpoints.xl}) {
     position: fixed;
-    opacity: ${props => (props.show ? 1 : 0)};
+    opacity: ${({ show }) => (show ? 1 : 0)};
     z-index: 1000;
+    pointer-events: ${({ show }) => (show ? 'unset' : 'none')};
     background-color: ${theme.layout.contentBackground};
     width: 100% !important;
     max-width: 100%;
