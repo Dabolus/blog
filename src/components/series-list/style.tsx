@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Theme from '../../styles/theme';
+import theme from '../../styles/theme';
 import { Link } from 'gatsby';
 
 export const SeriesContainer = styled.section`
@@ -22,7 +22,7 @@ export const StyledSeriesList = styled.ul`
   padding: 0;
   justify-content: center;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
@@ -36,7 +36,7 @@ export const StyledSeries = styled.li`
     transform: scale(1.04);
   }
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     width: 50%;
     margin: 0 0 20px 0;
 

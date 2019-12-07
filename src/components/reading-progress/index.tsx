@@ -5,7 +5,7 @@ import React, {
   useState,
 } from 'react';
 import styled from 'styled-components';
-import Theme from '../../styles/theme';
+import theme from '../../styles/theme';
 
 interface ReadingProgressProps {
   target: RefObject<HTMLElement>;
@@ -17,7 +17,7 @@ const ReadingProgressBar = styled.div<{ color?: string }>`
   height: 5px;
   top: 70px;
   background-color: ${props =>
-    props.color ? props.color : Theme.layout.primaryColor};
+    props.color ? props.color : theme.layout.primaryColor};
   z-index: 500;
 `;
 

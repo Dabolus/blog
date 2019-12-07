@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import Theme from '../../styles/theme';
+import theme from '../../styles/theme';
 import Img from 'gatsby-image';
 import { CardProps } from './index';
 
@@ -24,7 +24,7 @@ export const StyledArticle = styled.article`
   display: inline-block;
   width: 100%;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     grid-area: unset !important;
   }
 `;
@@ -44,7 +44,7 @@ export const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
     height: 320px;
     border-bottom-left-radius: 3px;
 
-    @media (max-width: ${Theme.breakpoints.sm}) {
+    @media (max-width: ${theme.breakpoints.sm}) {
       width: 100%;
       float: none;
       height: 190px;

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { Post, Tag } from '../utils/models';
 import Subheader from '../components/subheader';
 import SEO from '../components/seo';
-import Theme from '../styles/theme';
+import theme from '../styles/theme';
 import PostGrid from '../components/post-grid';
 
 interface TagTemplateProps {
@@ -27,7 +27,7 @@ const TagTemplate: FunctionComponent<TagTemplateProps> = ({
   if (!tag && posts.length > 0) {
     tag = {
       name: posts[0].frontmatter.tags[0],
-      color: Theme.layout.primaryColor,
+      color: theme.layout.primaryColor,
       icon: null,
       featured: false,
     };

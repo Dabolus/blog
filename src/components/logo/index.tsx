@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import Theme from '../../styles/theme';
+import theme from '../../styles/theme';
 import Img from 'gatsby-image';
 
 interface LogoProps {
@@ -13,7 +13,7 @@ const LogoImage = styled(Img)`
   width: 30px;
   margin-right: 45px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     margin-right: 15px;
   }
 `;

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import Theme from '../styles/theme';
+import theme from '../styles/theme';
 
 export const Container = styled.div`
-  width: ${Theme.components.container.width};
+  width: ${theme.components.container.width};
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
 
-  @media (max-width: ${Theme.breakpoints.xl}) {
+  @media (max-width: ${theme.breakpoints.xl}) {
     padding: 0 20px;
   }
 `;
@@ -20,7 +20,7 @@ export const Grid = styled(Container)<{ columns?: number }>`
   );
   grid-gap: 30px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
     padding: 0 20px;
   }

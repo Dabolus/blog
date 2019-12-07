@@ -1,6 +1,6 @@
 import { DefaultTheme } from './default-theme';
 
-const Theme: DefaultTheme = {
+const theme: DefaultTheme = {
   layout: {
     backgroundColor: `#fafafa`,
     primaryColor: `#a4cbb8`,
@@ -29,4 +29,4 @@ const Theme: DefaultTheme = {
   },
 };
 
-export default Theme;
+export default theme;

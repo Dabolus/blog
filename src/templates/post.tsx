@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Toc from '../components/toc';
 import Img from 'gatsby-image';
 import ReadingProgress from '../components/reading-progress';
-import Theme from '../styles/theme';
+import theme from '../styles/theme';
 import { graphql, Link } from 'gatsby';
 import slugify from 'slugify';
 import Bio from '../components/bio';
@@ -34,7 +34,7 @@ const LeftSidebar = styled.div<{ show?: boolean }>`
   max-width: 225px;
   transition: opacity 0.5s;
 
-  @media (max-width: ${Theme.breakpoints.xl}) {
+  @media (max-width: ${theme.breakpoints.xl}) {
     position: fixed;
     opacity: ${props => (props.show ? 1 : 0)};
     z-index: 1000;
@@ -59,8 +59,8 @@ const PostContent = styled.div`
 
   li > a,
   p > a {
-    color: ${Theme.layout.linkColor};
-    border-bottom: 2px ${Theme.layout.linkColor} solid;
+    color: ${theme.layout.linkColor};
+    border-bottom: 2px ${theme.layout.linkColor} solid;
   }
 
   pre {
@@ -68,8 +68,8 @@ const PostContent = styled.div`
   }
 
   blockquote {
-    border-left: 4px ${Theme.layout.primaryColor} solid;
-    background-color: ${Theme.layout.backgroundColor};
+    border-left: 4px ${theme.layout.primaryColor} solid;
+    background-color: ${theme.layout.backgroundColor};
     margin: 30px 0;
     padding: 5px 20px;
     border-radius: 0.3em;
@@ -129,7 +129,7 @@ const TocWrapper = styled.div`
 const PostHeader = styled.header`
   padding: 40px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     padding: 20px;
   }
 `;
@@ -137,7 +137,7 @@ const PostHeader = styled.header`
 const FeaturedImage = styled(Img)`
   border-radius: 0;
 
-  @media (max-width: ${Theme.breakpoints.xl}) {
+  @media (max-width: ${theme.breakpoints.xl}) {
     margin-left: -1px;
     margin-right: -1px;
   }
@@ -146,7 +146,7 @@ const FeaturedImage = styled(Img)`
 const StyledPost = styled.section`
   padding: 40px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     padding: 20px;
   }
 `;
@@ -199,7 +199,7 @@ const BioWrapper = styled.div`
   width: 50%;
   margin: auto;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     width: 100%;
   }
 `;
@@ -220,7 +220,7 @@ const ToggleTocButton = styled.button`
   color: #fff;
   outline: none;
 
-  @media (min-width: ${Theme.breakpoints.xl}) {
+  @media (min-width: ${theme.breakpoints.xl}) {
     display: none;
   }
 `;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Container } from '../common';
-import Theme from '../../styles/theme';
+import theme from '../../styles/theme';
 import { Link } from 'gatsby';
 
 export const NavContainer = styled.div<{ dark?: boolean }>`
@@ -27,7 +27,7 @@ export const NavWrapper = styled.div`
   height: 70px;
   white-space: nowrap;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     width: 90%;
   }
 `;
@@ -41,7 +41,7 @@ export const NavMenu = styled.ul<{ mobile?: boolean }>`
   ${props =>
     props.mobile &&
     `
-    @media (max-width: ${Theme.breakpoints.sm}) {
+    @media (max-width: ${theme.breakpoints.sm}) {
       width: 80%;
       overflow-x: auto;
       overflow-y: hidden;

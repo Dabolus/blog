@@ -22,7 +22,7 @@ change our appearance we'll have to shadow our `theme.ts` file.
 Just create this file under `src/@nehalist/gatsby-theme-nehalem/styles/theme.ts` and add the following content:
 
 ```typescript jsx
-const Theme: DefaultTheme = {
+const theme: DefaultTheme = {
   layout: {
     backgroundColor: `#fafafa`,
     primaryColor: `#a4cbb8`,
@@ -51,7 +51,7 @@ const Theme: DefaultTheme = {
   },
 };
 
-export default Theme;
+export default theme;
 ```
 
 And change the values to your needs.

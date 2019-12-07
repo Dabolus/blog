@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Layout from '../components/layout';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import Theme from '../styles/theme';
+import theme from '../styles/theme';
 import SEO from '../components/seo';
 
 interface ErrorProps {
@@ -35,7 +35,7 @@ const ErrorDescription = styled.h2`
 `;
 
 const BackLink = styled(Link)`
-  color: ${Theme.layout.primaryColor};
+  color: ${theme.layout.primaryColor};
 
   &:hover {
     text-decoration: underline;

@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import Theme from '../../styles/theme';
+import theme from '../../styles/theme';
 import Typed from 'react-typed';
 
 export const StyledHeader = styled.header`
   display: flex;
-  background: ${Theme.components.header.background};
+  background: ${theme.components.header.background};
   flex-direction: column;
-  height: ${Theme.components.header.height};
+  height: ${theme.components.header.height};
   border-bottom: 2px #ededed solid;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     height: 30vh;
   }
 `;
@@ -21,7 +21,7 @@ export const TitleWrapper = styled.div`
   height: 100%;
   flex-direction: column;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     margin-top: -50px;
     font-size: 0.75em;
     margin-left: 10px;

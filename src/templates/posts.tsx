@@ -8,7 +8,7 @@ import TagList from '../components/tag-list';
 import { Link } from 'gatsby';
 import SidebarContent from '../components/sidebar-content';
 import SEO from '../components/seo';
-import Theme from '../styles/theme';
+import theme from '../styles/theme';
 
 interface PostsPageProps {
   pathContext: {
@@ -23,7 +23,7 @@ const HomeContainer = styled(Container)`
   grid-template-columns: minmax(0, 1fr) 0.25fr;
   grid-column-gap: 30px;
 
-  @media (max-width: ${Theme.breakpoints.xl}) {
+  @media (max-width: ${theme.breakpoints.xl}) {
     grid-template-columns: 1fr;
   }
 `;
@@ -37,7 +37,7 @@ const PostsContainer = styled(Grid)`
   margin-right: 0;
   margin-top: -30px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     display: block;
     padding: 0;
 
@@ -51,7 +51,7 @@ const Sidebar = styled.aside`
   width: 315px;
   padding-top: 30px;
 
-  @media (max-width: ${Theme.breakpoints.xl}) {
+  @media (max-width: ${theme.breakpoints.xl}) {
     margin: 30px auto;
     border-top: 2px #e5eff5 solid;
     padding: 20px;

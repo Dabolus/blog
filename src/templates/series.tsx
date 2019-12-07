@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { Post, Series } from '../utils/models';
 import Subheader from '../components/subheader';
 import SEO from '../components/seo';
-import Theme from '../styles/theme';
+import theme from '../styles/theme';
 import PostGrid from '../components/post-grid';
 
 interface SeriesTemplateProps {
@@ -27,7 +27,7 @@ const SeriesTemplate: FunctionComponent<SeriesTemplateProps> = ({
   if (!series && posts.length > 0) {
     series = {
       name: posts[0].frontmatter.series,
-      color: Theme.layout.primaryColor,
+      color: theme.layout.primaryColor,
       icon: null,
       featured: false,
     };

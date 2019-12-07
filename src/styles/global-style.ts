@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import Theme from './theme';
+import theme from './theme';
 import styledNormalize from 'styled-normalize';
 import * as prismStyle from 'prismjs/themes/prism-okaidia.css';
 
@@ -9,11 +9,11 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    background-color: ${Theme.layout.backgroundColor};
+    background-color: ${theme.layout.backgroundColor};
   }
 
   body {
-    font-family: ${Theme.fonts.base};
+    font-family: ${theme.fonts.base};
     line-height: 1.9em;
   }
 

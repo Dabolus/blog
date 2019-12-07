@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Card } from '../card';
 import styled from 'styled-components';
-import Theme from '../../styles/theme';
+import theme from '../../styles/theme';
 
 const LatestPosts = styled.div`
   display: grid;
@@ -10,7 +10,7 @@ const LatestPosts = styled.div`
   grid-gap: 30px;
   width: 310px;
 
-  @media (max-width: ${Theme.breakpoints.md}) {
+  @media (max-width: ${theme.breakpoints.md}) {
     grid-template-columns: 1fr 1fr;
   }
 
