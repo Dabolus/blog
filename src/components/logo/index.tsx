@@ -28,7 +28,7 @@ const Logo: FunctionComponent<LogoProps> = ({ title }) => {
     query {
       file(
         sourceInstanceName: { eq: "themeAssets" }
-        name: { eq: "nehalist-gatsby" }
+        name: { eq: "android-chrome-192x192" }
       ) {
         childImageSharp {
           fixed(width: 30, height: 30) {

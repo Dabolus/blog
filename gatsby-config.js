@@ -49,11 +49,22 @@ module.exports = {
       options: {
         name: `Giorgio Garasto's Blog`,
         short_name: `GG's Blog`,
+        icons: [
+          {
+            src: `${__dirname}/assets/icons/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `${__dirname}/assets/icons/android-chrome-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+        ],
+        theme_color: `#303030`,
+        background_color: `#303030`,
         start_url: `/`,
-        background_color: `#a4cbb8`,
-        theme_color: `#a4cbb8`,
-        display: `minimal-ui`,
-        icon: `${__dirname}/assets/nehalist-gatsby.png`,
+        display: `standalone`,
       },
     },
     {
