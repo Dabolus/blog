@@ -34,7 +34,7 @@
     "gatsby-source-firestore": "https://github.com/audkar/gatsby-source-firestore#51f46547cdf3ec384da29197065998ad434be1eb",
     "gatsby-transformer-remark": "^2.6.22",
     "gatsby-transformer-sharp": "^2.2.14",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "prismjs": "^1.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
