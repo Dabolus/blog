@@ -5,6 +5,7 @@ import React, {
   useState,
 } from 'react';
 import styled from 'styled-components';
+import useDisappearingHeader from '../../hooks/useDisappearingHeader';
 import theme from '../../styles/theme';
 
 interface ReadingProgressProps {
@@ -18,9 +19,9 @@ const ReadingProgressBar = styled.div<{ color?: string; border?: string }>`
   width: 100%;
   height: 5px;
   top: 70px;
-  background-color: ${props => props.color || theme.layout.primaryColor};
+  background-color: ${(props) => props.color || theme.layout.primaryColor};
   box-shadow: 0 0.5px 0.5px
-    ${props => props.border || theme.layout.defaultBackground};
+    ${(props) => props.border || theme.layout.defaultBackground};
   z-index: 500;
   transform-origin: left center;
   will-change: transform;
@@ -31,7 +32,10 @@ const ReadingProgress: FunctionComponent<ReadingProgressProps> = ({
   border,
   target,
 }) => {
-  const [readingProgress, setReadingProgress] = useState<number>(0);
+  const scrollFromTop = useDisappearingHeader();
+
+  const [readingProgress, setReadingProgress] = useState(0);
+
   const scrollListener = () => {
     if (!target.current) {
       return;
@@ -59,12 +63,15 @@ const ReadingProgress: FunctionComponent<ReadingProgressProps> = ({
 
   useEffect(() => {
     window.addEventListener('scroll', scrollListener);
+
     return () => window.removeEventListener('scroll', scrollListener);
   });
 
   return (
     <ReadingProgressBar
-      style={{ transform: `scaleX(${readingProgress})` }}
+      style={{
+        transform: `translateY(${scrollFromTop}px) scaleX(${readingProgress})`,
+      }}
       color={color}
       border={border}
     />
