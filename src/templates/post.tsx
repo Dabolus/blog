@@ -12,6 +12,7 @@ import slugify from 'slugify';
 import Bio from '../components/bio';
 import Comments from '../components/comments';
 import SEO from '../components/seo';
+import TimeIcon from '../components/icons/time';
 import { FaAlignJustify, FaTimes } from 'react-icons/fa';
 
 interface PostTemplateProps {
@@ -74,6 +75,33 @@ const PostContent = styled.div`
     margin: 30px 0;
     padding: 5px 20px;
     border-radius: 0.3em;
+  }
+
+  table {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    text-align: left;
+    border-bottom: 1px solid ${theme.layout.separator};
+    padding: 1rem;
+  }
+
+  th:last-child,
+  td:last-child {
+    padding-right: 0;
   }
 
   h3::before,

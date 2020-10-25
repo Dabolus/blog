@@ -1,7 +1,11 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
+
+import TimeIcon from '../icons/time';
+
 import {
   CardContent,
   CardMeta,
+  CardReadingTime,
   CardTitle,
   FeaturedImage,
   StyledArticle,
@@ -10,6 +14,7 @@ import {
 
 export interface CardProps {
   title?: string;
+  readingTime?: number;
   path: string;
   featuredImage?: any;
   content?: string;
@@ -30,6 +35,7 @@ export const Card: FunctionComponent<CardProps> = ({
   meta,
   path,
   featuredImage,
+  readingTime,
   content,
   halfImage = false,
   compact = false,
@@ -50,12 +56,17 @@ export const Card: FunctionComponent<CardProps> = ({
         <header>
           {meta && (
             <CardMeta>
-              {meta.tag && <>{meta.tag}</>}
+              {/* {meta.tag && <>{meta.tag}</>} */}
               {meta.series && <>{meta.series}</>}
               {meta.time && <time dateTime={meta.time}>{meta.timePretty}</time>}
             </CardMeta>
           )}
           {title && <CardTitle>{title}</CardTitle>}
+          {readingTime && (
+            <CardReadingTime>
+              <TimeIcon /> ≈{readingTime}min
+            </CardReadingTime>
+          )}
         </header>
         {content && <p dangerouslySetInnerHTML={{ __html: content }} />}
       </CardContent>
