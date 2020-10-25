@@ -37,7 +37,7 @@ export const Search: FunctionComponent = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   });
 
-  const handleClickOutside = event => {
+  const handleClickOutside = (event) => {
     if (searchRef.current && !searchRef.current.contains(event.target)) {
       setIsOpen(false);
     }
@@ -45,7 +45,7 @@ export const Search: FunctionComponent = () => {
 
   // The actual search functionality
   // See https://www.gatsbyjs.org/packages/gatsby-plugin-lunr/
-  const search = event => {
+  const search = (event) => {
     const input = event.target.value;
     if (!input || !(window as any).__LUNR__ || input === '') {
       setQuery(input);
@@ -64,7 +64,7 @@ export const Search: FunctionComponent = () => {
   };
 
   // Responsible for navigating to results on key presses
-  const scrollToResult = selectIndex => {
+  const scrollToResult = (selectIndex) => {
     if (resultListRef.current && resultRefs[selectIndex]) {
       const current = resultRefs[selectIndex];
       resultListRef.current.scrollTop =
@@ -73,7 +73,7 @@ export const Search: FunctionComponent = () => {
   };
 
   // Key handling to enable key navigation (arrow keys, ...) within the search results
-  const handleKey = event => {
+  const handleKey = (event) => {
     const currentSelection = results[selected];
 
     switch (event.key) {
@@ -153,7 +153,7 @@ export const Search: FunctionComponent = () => {
               <SearchResult
                 onMouseOver={() => setSelected(index)} // tslint:disable-line
                 key={index}
-                ref={ref => {
+                ref={(ref) => {
                   if (ref) {
                     resultRefs[index] = ref;
                   }
@@ -161,7 +161,7 @@ export const Search: FunctionComponent = () => {
                 selected={index === selected}
               >
                 <ResultLink to={item.path}>
-                  {item.tags && <small>{item.tags.join(', ')}</small>}
+                  {/* {item.tags && <small>{item.tags.join(', ')}</small>} */}
                   {item.series && <small>{item.series}</small>}
                   <ResultTitle>{item.title}</ResultTitle>
                   {item.excerpt}
