@@ -164,6 +164,18 @@ const PostTitle = styled.h1`
   padding: 0;
 `;
 
+const PostReadingTime = styled.p`
+  font-size: 0.8em;
+  margin-bottom: 0;
+  color: ${theme.layout.secondaryColor};
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    margin-right: 0.4em;
+  }
+`;
+
 const PostFooter = styled.footer`
   background-color: ${theme.layout.cardBackground};
   font-size: 0.8em;
@@ -291,6 +303,10 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 </time>
               </PostMeta>
               <PostTitle>{post.frontmatter.title}</PostTitle>
+              <PostReadingTime>
+                <TimeIcon />
+                Estimated reading time: ≈{post.timeToRead}min
+              </PostReadingTime>
             </PostHeader>
             {post.frontmatter.featuredImage && (
               <FeaturedImage
@@ -356,6 +372,7 @@ export const query = graphql`
       headings {
         depth
       }
+      timeToRead
       frontmatter {
         title
         path

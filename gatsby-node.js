@@ -47,6 +47,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
             headings {
               depth
             }
+            timeToRead
             frontmatter {
               title
               path

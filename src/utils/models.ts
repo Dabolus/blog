@@ -47,6 +47,7 @@ export interface MenuItem {
 
 export interface Post {
   id: string;
+  timeToRead: number;
   frontmatter: {
     title: string;
     path: string;

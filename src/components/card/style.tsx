@@ -35,7 +35,7 @@ export const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
   max-width: 100%;
   border-top-left-radius: 3px;
 
-  ${props =>
+  ${(props) =>
     props.halfImage
       ? `
     width: 50%;
@@ -59,7 +59,7 @@ export const FeaturedImage = styled(Img)<Pick<CardProps, 'halfImage'>>`
 `;
 
 export const CardContent = styled.section<{ compact: boolean }>`
-  padding: ${props => (props.compact ? '10px' : '40px')};
+  padding: ${(props) => (props.compact ? '10px' : '40px')};
 
   p {
     margin: 15px 0;
@@ -82,4 +82,16 @@ export const CardMeta = styled.section`
 export const CardTitle = styled.h2`
   margin: 0;
   padding: 0;
+`;
+
+export const CardReadingTime = styled.p`
+  font-size: 0.8em;
+  margin-bottom: 0;
+  color: ${theme.layout.secondaryColor};
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    margin-right: 0.4em;
+  }
 `;

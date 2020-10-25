@@ -86,6 +86,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
           {posts.map((post, index) => (
             <Card
               title={post.frontmatter.title}
+              readingTime={post.timeToRead}
               path={post.frontmatter.path}
               featuredImage={
                 post.frontmatter.featuredImage
@@ -101,6 +102,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
                   post.frontmatter.tags.length > 0
                     ? post.frontmatter.tags[0]
                     : null,
+                series: post.frontmatter.series,
               }}
               style={{ gridArea: index === 0 ? 'latest' : undefined }}
               halfImage={index === 0}

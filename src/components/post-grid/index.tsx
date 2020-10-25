@@ -12,6 +12,7 @@ const PostGrid: FunctionComponent<PostGridProps> = ({ posts }) => (
     {posts.map((post, index) => (
       <Card
         title={post.frontmatter.title}
+        readingTime={post.timeToRead}
         path={post.frontmatter.path}
         featuredImage={
           post.frontmatter.featuredImage

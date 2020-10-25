@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Card } from '../card';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
+import { Post } from '../../utils/models';
 
 const LatestPosts = styled.div`
   display: grid;
@@ -30,6 +31,7 @@ const PageSidebarContent: FunctionComponent = () => {
         edges {
           node {
             id
+            timeToRead
             frontmatter {
               title
               path
@@ -51,7 +53,7 @@ const PageSidebarContent: FunctionComponent = () => {
       }
     }
   `);
-  const posts = latestPosts.posts.edges.map(node => node.node);
+  const posts: Post[] = latestPosts.posts.edges.map((node) => node.node);
 
   return (
     <>
@@ -60,6 +62,7 @@ const PageSidebarContent: FunctionComponent = () => {
         {posts.map((post, index) => (
           <Card
             title={post.frontmatter.title}
+            readingTime={post.timeToRead}
             featuredImage={post.frontmatter.featuredImage.childImageSharp}
             path={post.frontmatter.path}
             key={index}
