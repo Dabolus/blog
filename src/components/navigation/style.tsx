@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 
 export const NavContainer = styled.div<{ dark?: boolean }>`
   z-index: 1000;
-  ${props =>
+  ${(props) =>
     props.dark &&
     `
     background-color: ${theme.layout.accent};
@@ -38,7 +38,7 @@ export const NavMenu = styled.ul<{ mobile?: boolean }>`
   margin: 0;
   padding: 0;
 
-  ${props =>
+  ${(props) =>
     props.mobile &&
     `
     @media (max-width: ${theme.breakpoints.sm}) {

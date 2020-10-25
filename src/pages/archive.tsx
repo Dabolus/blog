@@ -19,7 +19,7 @@ const ArchivePage: FunctionComponent<ArchivePageProps> = ({
   data,
   location,
 }) => {
-  const posts = data.allPosts.edges.map(node => node.node) as Post[];
+  const posts = data.allPosts.edges.map((node) => node.node) as Post[];
 
   return (
     <Layout bigHeader={false}>
@@ -51,7 +51,7 @@ export const query = graphql`
             createdPretty: created(formatString: "DD MMMM, YYYY")
             featuredImage {
               childImageSharp {
-                sizes(maxWidth: 500, quality: 100) {
+                fluid(maxWidth: 500, quality: 100) {
                   base64
                   aspectRatio
                   src

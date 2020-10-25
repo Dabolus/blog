@@ -248,7 +248,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
         description={post.frontmatter.excerpt}
         image={
           post.frontmatter.featuredImage
-            ? post.frontmatter.featuredImage.childImageSharp.sizes.src
+            ? post.frontmatter.featuredImage.childImageSharp.fluid.src
             : null
         }
       />
@@ -294,7 +294,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
             </PostHeader>
             {post.frontmatter.featuredImage && (
               <FeaturedImage
-                sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+                fluid={post.frontmatter.featuredImage.childImageSharp.fluid}
               />
             )}
             <StyledPost
@@ -368,8 +368,8 @@ export const query = graphql`
         updatedPretty: updated(formatString: "DD MMMM, YYYY")
         featuredImage {
           childImageSharp {
-            sizes(maxWidth: 800, quality: 75) {
-              ...GatsbyImageSharpSizes
+            fluid(maxWidth: 800, quality: 75) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

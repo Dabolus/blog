@@ -22,7 +22,7 @@ const TagTemplate: FunctionComponent<TagTemplateProps> = ({
   location,
 }) => {
   let tag = data.tag;
-  const posts = data.posts.edges.map(node => node.node);
+  const posts = data.posts.edges.map((node) => node.node);
 
   if (!tag && posts.length > 0) {
     tag = {
@@ -73,7 +73,7 @@ export const query = graphql`
             createdPretty: created(formatString: "DD MMMM, YYYY")
             featuredImage {
               childImageSharp {
-                sizes(maxWidth: 800, quality: 100) {
+                fluid(maxWidth: 800, quality: 100) {
                   base64
                   aspectRatio
                   src

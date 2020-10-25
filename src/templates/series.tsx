@@ -22,7 +22,7 @@ const SeriesTemplate: FunctionComponent<SeriesTemplateProps> = ({
   location,
 }) => {
   let series = data.series;
-  const posts = data.posts.edges.map(node => node.node);
+  const posts = data.posts.edges.map((node) => node.node);
 
   if (!series && posts.length > 0) {
     series = {
@@ -73,7 +73,7 @@ export const query = graphql`
             createdPretty: created(formatString: "DD MMMM, YYYY")
             featuredImage {
               childImageSharp {
-                sizes(maxWidth: 800, quality: 100) {
+                fluid(maxWidth: 800, quality: 100) {
                   base64
                   aspectRatio
                   src
