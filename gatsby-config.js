@@ -29,17 +29,22 @@ module.exports = {
       name: `Giorgio Garasto`,
       description: `Hi! I'm <strong>Giorgio Garasto</strong>, a Software Engineer trying to make the web a better place since 2004.`,
       social: {
-        facebook: `https://fb.me/giorgio.garasto`,
-        twitter: `https://twitter.com/Dabolus`,
         linkedin: `https://linkedin.com/in/GiorgioGarasto`,
-        github: `https://git.io/Dabolus`,
+        github: `https://github.com/Dabolus`,
+        twitter: `https://twitter.com/Dabolus`,
+        facebook: `https://fb.me/giorgio.garasto`,
         telegram: `https://t.me/Dabolus`,
       },
     },
   },
   plugins: [
     `gatsby-plugin-typescript`,
-    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        checkSupportedExtensions: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
@@ -106,12 +111,12 @@ module.exports = {
         ],
         resolvers: {
           MarkdownRemark: {
-            title: node => node.frontmatter.title,
-            content: node => node.html,
-            tags: node => node.frontmatter.tags,
-            series: node => node.frontmatter.series,
-            excerpt: node => node.frontmatter.excerpt,
-            path: node => node.frontmatter.path,
+            title: (node) => node.frontmatter.title,
+            content: (node) => node.html,
+            tags: (node) => node.frontmatter.tags,
+            series: (node) => node.frontmatter.series,
+            excerpt: (node) => node.frontmatter.excerpt,
+            path: (node) => node.frontmatter.path,
           },
         },
       },
@@ -178,7 +183,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.excerpt,
                   date: edge.node.frontmatter.created,

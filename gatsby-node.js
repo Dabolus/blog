@@ -56,7 +56,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
               created
               createdPretty: created(formatString: "DD MMMM, YYYY")
               updated
-              updatedPretty: created(formatString: "DD MMMM, YYYY")
+              updatedPretty: updated(formatString: "DD MMMM, YYYY")
               featuredImage {
                 childImageSharp {
                   sizes(maxWidth: 500, quality: 70) {
@@ -96,15 +96,15 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
   const tags = [];
   const series = [];
-  const posts = result.data.posts.edges.map(node => node.node);
-  const pages = result.data.pages.edges.map(node => node.node);
+  const posts = result.data.posts.edges.map((node) => node.node);
+  const pages = result.data.pages.edges.map((node) => node.node);
   const availableTags =
-    result.data.tags.edges.map(node => node.node).map(t => t.name) || [];
+    result.data.tags.edges.map((node) => node.node).map((t) => t.name) || [];
   const availableSeries =
-    result.data.series.edges.map(node => node.node).map(t => t.name) || [];
+    result.data.series.edges.map((node) => node.node).map((t) => t.name) || [];
 
   // Create a route for every single post (located in `content/posts`)
-  posts.forEach(post => {
+  posts.forEach((post) => {
     if (post.frontmatter.tags) {
       tags.push(...post.frontmatter.tags);
     }
@@ -125,7 +125,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   });
 
   // Create a route for every single page (located in `content/pages`)
-  pages.forEach(page => {
+  pages.forEach((page) => {
     actions.createPage({
       path: page.frontmatter.path,
       component: require.resolve(`./src/templates/page.tsx`),
@@ -136,7 +136,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   });
 
   // Create a route for every single route (from `content/tags.yml` and the tags found in posts)
-  [...new Set(tags)].concat(availableTags).forEach(tag => {
+  [...new Set(tags)].concat(availableTags).forEach((tag) => {
     const slugified = slugify(tag, { lower: true });
     actions.createPage({
       path: `/tag/${slugified}`,
@@ -148,7 +148,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   });
 
   // Create a route for every single route (from `content/series.yml` and the series found in posts)
-  [...new Set(series)].concat(availableSeries).forEach(series => {
+  [...new Set(series)].concat(availableSeries).forEach((series) => {
     const slugified = slugify(series, { lower: true });
     actions.createPage({
       path: `/series/${slugified}`,

@@ -32,12 +32,12 @@ const PostContainer = styled(Container)`
 const LeftSidebar = styled.div<{ show?: boolean }>`
   min-width: 255px;
   max-width: 225px;
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, z-index 0.5s;
 
   @media (max-width: ${theme.breakpoints.xl}) {
     position: fixed;
     opacity: ${({ show }) => (show ? 1 : 0)};
-    z-index: 1000;
+    z-index: ${(props) => (props.show ? 1000 : -1)};
     pointer-events: ${({ show }) => (show ? 'unset' : 'none')};
     background-color: ${theme.layout.contentBackground};
     width: 100% !important;
@@ -257,7 +257,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
         color={primaryTag ? primaryTag.color : undefined}
       />
       <PostContainer>
-        {post.headings.find(h => h.depth > 1) && (
+        {post.headings.find((h) => h.depth > 1) && (
           <>
             <LeftSidebar show={showToc}>
               <TocWrapper>
@@ -342,7 +342,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
           </BioWrapper>
         </PostAdditionContent>
       </PostAddition>
-      <Comments />
+      <Comments id={post.id} />
     </Layout>
   );
 };
@@ -352,6 +352,7 @@ export default PostTemplate;
 export const query = graphql`
   query PrimaryTag($postId: String!, $primaryTag: String!) {
     post: markdownRemark(id: { eq: $postId }) {
+      id
       headings {
         depth
       }
@@ -364,7 +365,7 @@ export const query = graphql`
         created
         createdPretty: created(formatString: "DD MMMM, YYYY")
         updated
-        updatedPretty: created(formatString: "DD MMMM, YYYY")
+        updatedPretty: updated(formatString: "DD MMMM, YYYY")
         featuredImage {
           childImageSharp {
             sizes(maxWidth: 800, quality: 75) {

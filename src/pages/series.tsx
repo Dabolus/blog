@@ -28,7 +28,7 @@ const SeriesName = styled.p`
 `;
 
 const SeriesPage: FunctionComponent<SeriesPageProps> = ({ data, location }) => {
-  const series = data.allSeries.edges.map(node => node.node);
+  const series = data.allSeries.edges.map((node) => node.node);
 
   return (
     <Layout bigHeader={false}>

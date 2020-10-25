@@ -26,6 +26,12 @@ const PageContainer = styled(Container)`
   p:first-child {
     margin-top: 0;
   }
+
+  li > a,
+  p > a {
+    color: ${theme.layout.accent};
+    border-bottom: 2px ${theme.layout.accent} solid;
+  }
 `;
 
 const PageSidebar = styled.aside`

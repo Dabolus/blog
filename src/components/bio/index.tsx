@@ -14,7 +14,7 @@ interface BioProps {
 
 const StyledBio = styled.section<Pick<BioProps, 'textAlign'>>`
   margin: auto;
-  text-align: ${props => props.textAlign};
+  text-align: ${(props) => props.textAlign};
   width: 100%;
 `;
 
@@ -45,10 +45,10 @@ const Bio: FunctionComponent<BioProps> = ({
             name
             description
             social {
-              facebook
-              twitter
               linkedin
               github
+              twitter
+              facebook
               telegram
             }
           }

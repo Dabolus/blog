@@ -18,7 +18,7 @@ The basic structure for pages is:
 import React, { FunctionComponent } from 'react';
 import Layout from '@nehalist/gatsby-theme-nehalem/src/components/layout';
 import SEO from '@nehalist/gatsby-theme-nehalem/src/components/seo';
-import Container from '@nehalist/gatsby-theme-nehalem/src/components/common';
+import { Container } from '@nehalist/gatsby-theme-nehalem/src/components/common';
 
 const CustomPage: FunctionComponent<{ location: Location }> = ({
   location,
