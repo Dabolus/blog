@@ -67,6 +67,7 @@ export const query = graphql`
           frontmatter {
             title
             path
+            tags
             series
             excerpt
             created
