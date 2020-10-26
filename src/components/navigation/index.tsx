@@ -3,6 +3,7 @@ import {
   Nav,
   NavContainer,
   NavLink,
+  ExternalNavLink,
   NavMenu,
   NavMenuItem,
   NavWrapper,
@@ -40,10 +41,20 @@ const Navigation: FunctionComponent<NavigationProps> = ({
           <NavMenu mobile={true}>
             {menu.map((item, index) => (
               <NavMenuItem key={index}>
-                <NavLink to={item.path} key={index}>
-                  {item.name}
-                  {item.path.startsWith('http') && <ExternalIcon />}
-                </NavLink>
+                {item.path.startsWith('http') ? (
+                  <ExternalNavLink
+                    href={item.path}
+                    rel="external"
+                    target={item.name}
+                    key={index}
+                  >
+                    {item.name} <ExternalIcon />
+                  </ExternalNavLink>
+                ) : (
+                  <NavLink to={item.path} key={index}>
+                    {item.name}
+                  </NavLink>
+                )}
               </NavMenuItem>
             ))}
           </NavMenu>

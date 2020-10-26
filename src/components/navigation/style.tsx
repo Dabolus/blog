@@ -67,6 +67,16 @@ export const NavLink = styled(Link)`
   &:hover {
     color: ${theme.layout.primaryOnAccent};
   }
+`;
+
+export const ExternalNavLink = styled.a`
+  color: ${theme.layout.secondaryOnAccent};
+  padding: 16px;
+  transition: color 0.5s;
+
+  &:hover {
+    color: ${theme.layout.primaryOnAccent};
+  }
 
   svg {
     width: 0.8em;
