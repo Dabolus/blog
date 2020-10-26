@@ -10,8 +10,12 @@ module.exports = {
         path: '/',
       },
       {
-        name: 'Example',
-        path: '/page',
+        name: 'About',
+        path: '/about',
+      },
+      {
+        name: 'Portfolio',
+        path: 'https://giorgio.garasto.me',
       },
     ],
     footerMenu: [
