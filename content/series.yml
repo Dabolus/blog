@@ -1,0 +1,23 @@
+- name: Reinventing the wheel
+  color: '#acabb1'
+  icon: ./assets/images/series/reinventing-the-wheel.svg
+  featured: true
+  description: >
+    It is often said that it is wrong to reinvent the wheel, but the advanced tires 
+    that we have today would not exist if someone had not tried to rethink the way 
+    wheels were built. This series is about rebuilding existing technologies from 
+    scratch to understand how they work, finding their gotchas, and possibly finding 
+    ways to improve them.
+- name: On the bleeding edge
+  color: '#f23488'
+  icon: ./assets/images/series/on-the-bleeding-edge.svg
+  featured: true
+  description: >
+    The web is constantly evolving, so there's always the risk of fossilizing on 
+    stable technologies. The aim of this series is to explore new, bleeding edge 
+    web technologies, in order to understand their use cases and their limitations.
+- name: Side projects
+  color: '#ffb954'
+  icon: ./assets/images/series/side-projects.svg
+  featured: false
+  description: ''

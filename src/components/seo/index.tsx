@@ -1,0 +1,206 @@
+import React, { FunctionComponent } from 'react';
+import Helmet from 'react-helmet';
+import { graphql, useStaticQuery } from 'gatsby';
+import { SiteMetadata } from '../../utils/models';
+import url from 'url';
+
+interface SEOProps {
+  title?: string;
+  lang?: string;
+  description?: string;
+  location: Location;
+  publishedAt?: string;
+  updatedAt?: string;
+  isArticle?: boolean;
+  tags?: string[];
+  series?: string;
+  type?: 'WebSite' | 'Series' | 'Article';
+  image?: string;
+}
+
+const SEO: FunctionComponent<SEOProps> = ({
+  title,
+  description,
+  lang = 'en',
+  location,
+  publishedAt,
+  updatedAt,
+  isArticle = false,
+  tags = [],
+  series,
+  type = `Article`,
+  image,
+}) => {
+  const { site } = useStaticQuery<SiteMetadata>(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          siteUrl
+          description
+          topics
+          author {
+            name
+            description
+            social {
+              twitter
+              facebook
+            }
+          }
+        }
+      }
+    }
+  `);
+  const metadata = site.siteMetadata;
+  const siteTitle = title ? `${title} - ${metadata.title}` : metadata.title;
+  const metaDescription = description
+    ? description
+    : metadata.description.replace('%TOPICS%', metadata.topics.join(', '));
+  const metaImage = image ? `${metadata.siteUrl}${image}` : null;
+  const canonical = url.resolve(metadata.siteUrl, location.pathname);
+
+  return (
+    <Helmet
+      htmlAttributes={{ lang }}
+      title={siteTitle}
+      meta={[
+        {
+          name: `description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:title`,
+          content: siteTitle,
+        },
+        {
+          property: `og:type`,
+          content: isArticle ? `article` : `website`,
+        },
+        {
+          property: `og:description`,
+          content: metaDescription,
+        },
+        {
+          property: `og:url`,
+          content: canonical,
+        },
+        {
+          name: `twitter:label1`,
+          content: `Written by`,
+        },
+        {
+          name: `twitter:data1`,
+          content: metadata.author.name,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:creator`,
+          content: metadata.author.name,
+        },
+        {
+          name: `twitter:title`,
+          content: siteTitle,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+        {
+          name: `keywords`,
+          content: [
+            ...metadata.topics,
+            ...tags,
+            ...(series ? [series] : []),
+          ].join(', '),
+        },
+      ].concat(
+        publishedAt
+          ? [
+              {
+                name: `article:published_time`,
+                content: publishedAt,
+              },
+            ]
+          : [],
+        updatedAt
+          ? [
+              {
+                name: `article:modified_time`,
+                content: updatedAt,
+              },
+            ]
+          : [],
+        series
+          ? [
+              {
+                name: `twitter:label2`,
+                content: `Filed under`,
+              },
+              {
+                name: `twitter:data2`,
+                content: series,
+              },
+            ]
+          : [],
+        metaImage
+          ? [
+              {
+                property: `og:image`,
+                content: metaImage,
+              },
+              {
+                name: `twitter:image`,
+                content: metaImage,
+              },
+            ]
+          : [],
+      )}
+    >
+      <script type={`application/ld+json`}>{`
+        {
+          "@context": "https://schema.org/",
+          "@type": "${type}",
+          "author": {
+            "@type": "Person",
+            "name": "${metadata.author.name}"
+          },
+          ${
+            series || tags.length > 0
+              ? `"keywords": "${[...tags, ...(series ? [series] : [])].join(
+                  `, `,
+                )}",`
+              : ``
+          }
+          "headline": "${siteTitle}",
+          "url": "${canonical}",
+          ${publishedAt ? `"datePublished": "${publishedAt}",` : ``}
+          ${updatedAt ? `"dateModified": "${updatedAt}",` : ``}
+          ${
+            metaImage
+              ? `"image": {
+            "@type": "ImageObject",
+            "url": "${metaImage}",
+            "width": "1000",
+            "height": "520"
+          },`
+              : ``
+          }
+          "publisher": {
+            "@type": "Organization",
+            "name": "${metadata.title}"
+          },
+          "description": "${metaDescription}",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "${metadata.siteUrl}"
+          }
+        }
+      `}</script>
+    </Helmet>
+  );
+};
+
+export default SEO;
