@@ -77,6 +77,11 @@ const PostContent = styled.div`
     border-radius: 0.3em;
   }
 
+  .responsive-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+
   table {
     margin-left: 0;
     margin-right: 0;

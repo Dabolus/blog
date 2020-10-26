@@ -23,6 +23,8 @@ You can find the web app on [the projects section](https://giorgio.garasto.me/en
 
 Just for reference, here is the table with the rotation and revolution times used on the web app:
 
+<div class="responsive-table">
+
 | **Celestial object** | **Rotation time (days)** | **Revolution time (days)** |
 | -------------------- | ------------------------ | -------------------------- |
 | **Earth**            | 0.99726968               | 365.256363004              |
@@ -35,6 +37,9 @@ Just for reference, here is the table with the rotation and revolution times use
 | **Saturn**           | 0.43958333               | 10759.22                   |
 | **Uranus**           | 0.71833                  | 30688.5                    |
 | **Venus**            | 243.025                  | 224.701                    |
+
+</div>
+
 
 ---
 
