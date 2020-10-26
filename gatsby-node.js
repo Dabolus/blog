@@ -60,6 +60,9 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
               updatedPretty: updated(formatString: "DD MMMM, YYYY")
               featuredImage {
                 childImageSharp {
+                  sqip(numberOfPrimitives: 20, blur: 6) {
+                    dataURI
+                  }
                   fluid(maxWidth: 500, quality: 70) {
                     base64
                     aspectRatio

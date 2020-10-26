@@ -6,7 +6,6 @@ import { Series } from '../utils/models';
 import { Card } from '../components/card';
 import slugify from 'slugify';
 import { Grid } from '../components/common';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import SEO from '../components/seo';
 
@@ -42,12 +41,7 @@ const SeriesPage: FunctionComponent<SeriesPageProps> = ({ data, location }) => {
             compact={true}
             style={{ textAlign: 'center' }}
           >
-            {/* gatsby-image doesn't handle SVGs, hence we need to take care of it */}
-            {series.icon.extension !== 'svg' ? (
-              <Img fixed={series.icon.childImageSharp.fixed} />
-            ) : (
-              <SeriesSvgIcon src={series.icon.publicURL} alt={series.name} />
-            )}
+            <SeriesSvgIcon src={series.icon.publicURL} alt={series.name} />
             <SeriesName>{series.name}</SeriesName>
           </Card>
         ))}
@@ -65,12 +59,6 @@ export const query = graphql`
         node {
           name
           icon {
-            childImageSharp {
-              fixed(height: 55) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-            extension
             publicURL
           }
         }

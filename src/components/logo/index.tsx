@@ -2,13 +2,12 @@ import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import theme from '../../styles/theme';
-import Img from 'gatsby-image';
 
 interface LogoProps {
   title: string;
 }
 
-const LogoImage = styled(Img)`
+const LogoImage = styled.img`
   max-height: 30px;
   width: 30px;
   margin-right: 45px;
@@ -26,22 +25,15 @@ const HomeLink = styled(Link)`
 const Logo: FunctionComponent<LogoProps> = ({ title }) => {
   const logo = useStaticQuery(graphql`
     query {
-      file(
-        sourceInstanceName: { eq: "themeAssets" }
-        name: { eq: "android-chrome-192x192" }
-      ) {
-        childImageSharp {
-          fixed(width: 30, height: 30) {
-            ...GatsbyImageSharpFixed
-          }
-        }
+      file(sourceInstanceName: { eq: "themeAssets" }, name: { eq: "logo" }) {
+        publicURL
       }
     }
   `);
 
   return (
     <HomeLink to={`/`}>
-      <LogoImage fixed={logo.file.childImageSharp.fixed} alt={title} />
+      <LogoImage src={logo.file.publicURL} alt={title} />
     </HomeLink>
   );
 };

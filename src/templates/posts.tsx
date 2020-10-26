@@ -90,7 +90,28 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
               path={post.frontmatter.path}
               featuredImage={
                 post.frontmatter.featuredImage
-                  ? post.frontmatter.featuredImage.childImageSharp
+                  ? {
+                      ...(post.frontmatter.featuredImage.childImageSharp
+                        .fixed && {
+                        fixed: {
+                          ...post.frontmatter.featuredImage.childImageSharp
+                            .fixed,
+                          base64:
+                            post.frontmatter.featuredImage.childImageSharp.sqip
+                              .dataURI,
+                        },
+                      }),
+                      ...(post.frontmatter.featuredImage.childImageSharp
+                        .fluid && {
+                        fluid: {
+                          ...post.frontmatter.featuredImage.childImageSharp
+                            .fluid,
+                          base64:
+                            post.frontmatter.featuredImage.childImageSharp.sqip
+                              .dataURI,
+                        },
+                      }),
+                    }
                   : null
               }
               content={post.frontmatter.excerpt}

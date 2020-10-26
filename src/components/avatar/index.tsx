@@ -24,8 +24,11 @@ const Avatar: FunctionComponent<AvatarProps> = ({ alt, style }) => {
         name: { eq: "profile-pic" }
       ) {
         childImageSharp {
+          sqip(width: 55, height: 55, numberOfPrimitives: 6, blur: 6) {
+            dataURI
+          }
           fixed(width: 55, height: 55) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
       }
@@ -34,7 +37,10 @@ const Avatar: FunctionComponent<AvatarProps> = ({ alt, style }) => {
 
   return (
     <StyledAvatar
-      fixed={logo.file.childImageSharp.fixed}
+      fixed={{
+        ...logo.file.childImageSharp.fixed,
+        base64: logo.file.childImageSharp.sqip.dataURI,
+      }}
       alt={alt}
       style={style}
     />

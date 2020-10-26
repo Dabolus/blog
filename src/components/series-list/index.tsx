@@ -23,12 +23,6 @@ const SeriesList: FunctionComponent = () => {
         nodes {
           name
           icon {
-            childImageSharp {
-              fixed(height: 55) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-            extension
             publicURL
           }
         }
@@ -46,12 +40,7 @@ const SeriesList: FunctionComponent = () => {
           return (
             <StyledSeries key={index}>
               <Link to={`/series/${slugify(series.name, { lower: true })}`}>
-                {/* gatsby-image doesn't handle SVGs, hence we need to take care of it */}
-                {icon.extension !== 'svg' ? (
-                  <Img fixed={series.icon.childImageSharp.fixed} />
-                ) : (
-                  <SeriesIcon src={icon.publicURL} alt={series.name} />
-                )}
+                <SeriesIcon src={icon.publicURL} alt={series.name} />
                 <SeriesName>{series.name}</SeriesName>
               </Link>
             </StyledSeries>

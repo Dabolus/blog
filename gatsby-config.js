@@ -45,6 +45,7 @@ module.exports = {
         checkSupportedExtensions: false,
       },
     },
+    `gatsby-transformer-sqip`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
@@ -70,7 +71,16 @@ module.exports = {
         background_color: `#303030`,
         start_url: `/`,
         display: `standalone`,
+        cache_busting_mode: `none`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      // options: {
+      //   workboxConfig: {
+      //     globPatterns: [`**/icon-path*`],
+      //   },
+      // },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -219,5 +229,6 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-catch-links`,
   ],
 };

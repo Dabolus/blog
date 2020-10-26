@@ -42,8 +42,16 @@ const PageSidebarContent: FunctionComponent = () => {
               excerpt
               featuredImage {
                 childImageSharp {
+                  sqip(
+                    width: 315
+                    height: 100
+                    numberOfPrimitives: 20
+                    blur: 6
+                  ) {
+                    dataURI
+                  }
                   fixed(width: 315, height: 100) {
-                    ...GatsbyImageSharpFixed
+                    ...GatsbyImageSharpFixed_withWebp_noBase64
                   }
                 }
               }
@@ -63,7 +71,13 @@ const PageSidebarContent: FunctionComponent = () => {
           <Card
             title={post.frontmatter.title}
             readingTime={post.timeToRead}
-            featuredImage={post.frontmatter.featuredImage.childImageSharp}
+            featuredImage={{
+              fixed: {
+                ...post.frontmatter.featuredImage.childImageSharp.fixed,
+                base64:
+                  post.frontmatter.featuredImage.childImageSharp.sqip.dataURI,
+              },
+            }}
             path={post.frontmatter.path}
             key={index}
             compact={true}

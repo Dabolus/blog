@@ -74,6 +74,9 @@ export const query = graphql`
             createdPretty: created(formatString: "DD MMMM, YYYY")
             featuredImage {
               childImageSharp {
+                sqip(numberOfPrimitives: 25, blur: 6) {
+                  dataURI
+                }
                 fluid(maxWidth: 800, quality: 100) {
                   base64
                   aspectRatio

@@ -6,7 +6,6 @@ import { Tag } from '../utils/models';
 import { Card } from '../components/card';
 import slugify from 'slugify';
 import { Grid } from '../components/common';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import SEO from '../components/seo';
 
@@ -28,7 +27,7 @@ const TagName = styled.p`
 `;
 
 const TagsPage: FunctionComponent<TagsPageProps> = ({ data, location }) => {
-  const tags = data.allTags.edges.map(node => node.node);
+  const tags = data.allTags.edges.map((node) => node.node);
 
   return (
     <Layout bigHeader={false}>
@@ -42,12 +41,7 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({ data, location }) => {
             compact={true}
             style={{ textAlign: 'center' }}
           >
-            {/* gatsby-image doesn't handle SVGs, hence we need to take care of it */}
-            {tag.icon.extension !== 'svg' ? (
-              <Img fixed={tag.icon.childImageSharp.fixed} />
-            ) : (
-              <TagSvgIcon src={tag.icon.publicURL} alt={tag.name} />
-            )}
+            <TagSvgIcon src={tag.icon.publicURL} alt={tag.name} />
             <TagName>{tag.name}</TagName>
           </Card>
         ))}
@@ -65,12 +59,6 @@ export const query = graphql`
         node {
           name
           icon {
-            childImageSharp {
-              fixed(height: 55) {
-                ...GatsbyImageSharpFixed
-              }
-            }
-            extension
             publicURL
           }
         }
