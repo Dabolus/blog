@@ -53,6 +53,7 @@
     "typescript": "^4.0.3"
   },
   "devDependencies": {
+    "firebase-tools": "^8.13.1",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
     "stylelint-config-recommended": "^3.0.0",
