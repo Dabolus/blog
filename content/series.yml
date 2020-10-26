@@ -1,7 +1,7 @@
 - name: Reinventing the wheel
   color: '#acabb1'
   icon: ./assets/images/series/reinventing-the-wheel.svg
-  featured: false
+  featured: true
   description: >
     It is often said that it is wrong to reinvent the wheel, but the advanced tires 
     that we have today would not exist if someone had not tried to rethink the way 
@@ -11,7 +11,7 @@
 - name: On the bleeding edge
   color: '#f23488'
   icon: ./assets/images/series/on-the-bleeding-edge.svg
-  featured: false
+  featured: true
   description: >
     The web is constantly evolving, so there's always the risk of fossilizing on 
     stable technologies. The aim of this series is to explore new, bleeding edge 
