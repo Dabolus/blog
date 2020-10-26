@@ -200,6 +200,8 @@ const PostReadingTime = styled.p`
   align-items: center;
 
   & > svg {
+    width: 1.5em;
+    height: 1.5em;
     margin-right: 0.4em;
   }
 `;

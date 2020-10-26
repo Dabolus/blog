@@ -12,6 +12,7 @@ import { MenuItem } from '../../utils/models';
 import { Search } from '../search';
 import Logo from '../logo';
 import useDisappearingHeader from '../../hooks/useDisappearingHeader';
+import ExternalIcon from '../icons/external';
 
 interface NavigationProps {
   title: string;
@@ -41,6 +42,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({
               <NavMenuItem key={index}>
                 <NavLink to={item.path} key={index}>
                   {item.name}
+                  {item.path.startsWith('http') && <ExternalIcon />}
                 </NavLink>
               </NavMenuItem>
             ))}

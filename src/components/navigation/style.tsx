@@ -67,6 +67,11 @@ export const NavLink = styled(Link)`
   &:hover {
     color: ${theme.layout.primaryOnAccent};
   }
+
+  svg {
+    width: 0.8em;
+    height: 0.8em;
+  }
 `;
 
 export const SearchContainer = styled.div`

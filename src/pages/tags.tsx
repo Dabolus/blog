@@ -37,7 +37,7 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({ data, location }) => {
         {tags.map((tag, index) => (
           <Card
             key={index}
-            path={`/tag/${slugify(tag.name, { lower: true })}`}
+            path={`/tags/${slugify(tag.name, { lower: true })}`}
             compact={true}
             style={{ textAlign: 'center' }}
           >

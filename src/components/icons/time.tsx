@@ -1,6 +1,4 @@
-import { FunctionComponent } from 'react';
-
-import styled from 'styled-components';
+import React, { FunctionComponent } from 'react';
 
 const TimeIcon: FunctionComponent = (props) => (
   <svg viewBox="0 0 24 24" {...props}>
@@ -11,7 +9,4 @@ const TimeIcon: FunctionComponent = (props) => (
   </svg>
 );
 
-export default styled(TimeIcon)`
-  width: 1rem;
-  height: 1rem;
-`;
+export default TimeIcon;
