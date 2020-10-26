@@ -143,7 +143,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   [...new Set(tags)].concat(availableTags).forEach((tag) => {
     const slugified = slugify(tag, { lower: true });
     actions.createPage({
-      path: `/tag/${slugified}`,
+      path: `/tags/${slugified}`,
       component: require.resolve(`./src/templates/tag.tsx`),
       context: {
         tag,
