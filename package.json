@@ -6,7 +6,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}'"
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}'",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.19",
