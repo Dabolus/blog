@@ -16,7 +16,25 @@
           },
           {
             "key": "Cache-Control",
-            "value": "no-cache"
+            "value": "public, no-cache"
+          }
+        ]
+      },
+      {
+        "source": "**/static/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
           }
         ]
       },
@@ -29,7 +47,7 @@
           },
           {
             "key": "Cache-Control",
-            "value": "no-cache"
+            "value": "public, no-cache"
           }
         ]
       }
