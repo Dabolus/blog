@@ -20,7 +20,7 @@
     "gatsby-plugin-feed": "^2.5.19",
     "gatsby-plugin-lunr": "^1.5.2",
     "gatsby-plugin-manifest": "^2.4.35",
-    "gatsby-plugin-mdx": "^1.2.51",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-plugin-offline": "^3.2.37",
     "gatsby-plugin-page-creator": "^2.3.33",
     "gatsby-plugin-preact": "^4.0.16",
